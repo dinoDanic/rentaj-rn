@@ -39,6 +39,7 @@ export function SessionProvider(props: React.PropsWithChildren) {
         },
         signOut: () => {
           setSession(null);
+          router.replace("/");
         },
         session,
         isLoading,

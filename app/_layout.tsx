@@ -18,6 +18,7 @@ import {
   SearchIcon,
   UserIcon,
 } from "lucide-react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -41,6 +42,7 @@ export default function RootLayout() {
   return (
     <SessionProvider>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+        <SafeAreaView />
         <Tabs
           screenOptions={{
             headerShown: false,
@@ -55,15 +57,15 @@ export default function RootLayout() {
             }}
           />
           <Tabs.Screen
-            name="favorites"
-            options={{
-              tabBarIcon: ({ color }) => <HeartIcon color={color} />,
-            }}
-          />
-          <Tabs.Screen
             name="search"
             options={{
               tabBarIcon: ({ color }) => <SearchIcon color={color} />,
+            }}
+          />
+          <Tabs.Screen
+            name="favorites"
+            options={{
+              tabBarIcon: ({ color }) => <HeartIcon color={color} />,
             }}
           />
           <Tabs.Screen
