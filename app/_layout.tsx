@@ -8,6 +8,7 @@ import { Tabs } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
+import "../styles/globals.css";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { SessionProvider } from "@/features/auth/ctx";
@@ -47,6 +48,7 @@ export default function RootLayout() {
           screenOptions={{
             headerShown: false,
             tabBarShowLabel: false,
+            headerShadowVisible: false,
             // tabBarActiveTintColor: Colors.primary,
           }}
         >

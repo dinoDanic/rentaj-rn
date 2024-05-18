@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 import { useSession } from "../ctx";
-import { View, Text } from "react-native";
+import { View, Text, Button } from "react-native";
 import { SmileIcon } from "lucide-react-native";
 
 type Props = PropsWithChildren;
@@ -21,8 +21,8 @@ const RenderContent = () => {
         gap: 12,
       }}
     >
-      <Text>Login to view</Text>
-      <SmileIcon />
+      <Button title="Login to view" />
+      <SmileIcon color={"blue"} />
     </View>
   );
 };
