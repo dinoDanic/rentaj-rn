@@ -75,6 +75,7 @@ interface PositionedContentProps {
   /**
    * Platform: WEB ONLY
    */
+  // eslint-disable-next-line @typescript-eslint/array-type
   collisionBoundary?: Element | null | Array<Element | null>
   /**
    * Platform: WEB ONLY
