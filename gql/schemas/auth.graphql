@@ -1,0 +1,8 @@
+mutation createSession($input: CreateSessionInput!) {
+  createSession(input: $input) {
+    token
+    user {
+      id
+    }
+  }
+}
