@@ -1,4 +1,4 @@
-import type { CodegenConfig } from "@graphql-codegen/cli";
+import type { CodegenConfig } from "@graphql-codegen/cli"
 
 const config: CodegenConfig = {
   overwrite: true,
@@ -11,6 +11,6 @@ const config: CodegenConfig = {
       plugins: [],
     },
   },
-};
+}
 
-export default config;
+export default config

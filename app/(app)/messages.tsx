@@ -1,5 +1,5 @@
-import SecureView from "@/features/auth/components/secure_view";
-import { Text, View } from "react-native";
+import SecureView from "@/features/auth/components/secure_view"
+import { Text, View } from "react-native"
 
 export default function Messages() {
   return (
@@ -8,5 +8,5 @@ export default function Messages() {
         <Text>Messages</Text>
       </View>
     </SecureView>
-  );
+  )
 }

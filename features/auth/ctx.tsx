@@ -1,45 +1,46 @@
-import React from "react";
-import { useStorageState } from "./hooks/useStorageState";
-import { router } from "expo-router";
+import React from "react"
+import { router } from "expo-router"
+
+import { useStorageState } from "./hooks/useStorageState"
 
 const AuthContext = React.createContext<{
-  signIn: () => void;
-  signOut: () => void;
-  session?: string | null;
-  isLoading: boolean;
+  signIn: () => void
+  signOut: () => void
+  session?: string | null
+  isLoading: boolean
 }>({
   signIn: () => null,
   signOut: () => null,
   session: null,
   isLoading: false,
-});
+})
 
 // This hook can be used to access the user info.
 export function useSession() {
-  const value = React.useContext(AuthContext);
+  const value = React.useContext(AuthContext)
   if (process.env.NODE_ENV !== "production") {
     if (!value) {
-      throw new Error("useSession must be wrapped in a <SessionProvider />");
+      throw new Error("useSession must be wrapped in a <SessionProvider />")
     }
   }
 
-  return value;
+  return value
 }
 
 export function SessionProvider(props: React.PropsWithChildren) {
-  const [[isLoading, session], setSession] = useStorageState("session");
+  const [[isLoading, session], setSession] = useStorageState("session")
 
   return (
     <AuthContext.Provider
       value={{
         signIn: () => {
           // Perform sign-in logic here
-          setSession("xxx");
-          router.replace("/");
+          setSession("xxx")
+          router.replace("/")
         },
         signOut: () => {
-          setSession(null);
-          router.replace("/");
+          setSession(null)
+          router.replace("/")
         },
         session,
         isLoading,
@@ -47,5 +48,5 @@ export function SessionProvider(props: React.PropsWithChildren) {
     >
       {props.children}
     </AuthContext.Provider>
-  );
+  )
 }

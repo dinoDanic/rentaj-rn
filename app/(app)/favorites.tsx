@@ -1,5 +1,5 @@
-import SecureView from "@/features/auth/components/secure_view";
-import { Text, View } from "react-native";
+import SecureView from "@/features/auth/components/secure_view"
+import { Text, View } from "react-native"
 
 export default function Favorites() {
   return (
@@ -8,5 +8,5 @@ export default function Favorites() {
         <Text>Favorites</Text>
       </View>
     </SecureView>
-  );
+  )
 }

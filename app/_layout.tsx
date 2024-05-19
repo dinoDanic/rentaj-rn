@@ -1,12 +1,13 @@
-import * as SplashScreen from "expo-splash-screen";
-import "react-native-reanimated";
-import "../styles/global.css";
+import * as SplashScreen from "expo-splash-screen"
 
-import { Providers } from "@/project/providers";
-import { Stack } from "expo-router";
+import "react-native-reanimated"
+import "../styles/global.css"
+
+import { Providers } from "@/project/providers"
+import { Stack } from "expo-router"
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
   return (
@@ -16,5 +17,5 @@ export default function RootLayout() {
         <Stack.Screen name="login-modal" options={{ presentation: "modal" }} />
       </Stack>
     </Providers>
-  );
+  )
 }

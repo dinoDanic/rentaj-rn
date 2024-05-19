@@ -1,25 +1,18 @@
-import { Text } from "@/components/ui/text";
-import { useColorScheme } from "@/lib/useColorScheme";
-import { NAV_THEME } from "@/styles/nav_theme";
-import { Tabs } from "expo-router";
-import {
-  HeartIcon,
-  HomeIcon,
-  MessageCircleIcon,
-  SearchIcon,
-  UserIcon,
-} from "lucide-react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Tabs } from "expo-router"
+import { HeartIcon, HomeIcon, MessageCircleIcon, SearchIcon, UserIcon } from "lucide-react-native"
+import { SafeAreaView } from "react-native-safe-area-context"
+
+import { useColorScheme } from "@/lib/useColorScheme"
+import { Text } from "@/components/ui/text"
+import { NAV_THEME } from "@/styles/nav_theme"
 
 export const AppTabs = () => {
-  const { isDarkColorScheme } = useColorScheme();
+  const { isDarkColorScheme } = useColorScheme()
   return (
     <>
       <SafeAreaView
         style={{
-          backgroundColor: isDarkColorScheme
-            ? NAV_THEME.dark.background
-            : NAV_THEME.light.background,
+          backgroundColor: isDarkColorScheme ? NAV_THEME.dark.background : NAV_THEME.light.background,
         }}
       />
       <Tabs
@@ -62,5 +55,5 @@ export const AppTabs = () => {
         />
       </Tabs>
     </>
-  );
-};
+  )
+}
