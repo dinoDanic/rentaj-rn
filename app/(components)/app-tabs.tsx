@@ -1,3 +1,4 @@
+import { Text } from "@/components/ui/text";
 import { Tabs } from "expo-router";
 import {
   HeartIcon,
@@ -12,6 +13,7 @@ export const AppTabs = () => {
     <Tabs
       screenOptions={{
         headerShown: false,
+        headerBackground: () => <Text>lol</Text>,
         tabBarShowLabel: false,
         headerShadowVisible: false,
       }}
