@@ -1,24 +1,27 @@
-import { CategoriesDocument } from "@/gql/generated/graphql"
-import { _client } from "@/lib"
-import { useQuery } from "@tanstack/react-query"
+import { CategoryBaseCard } from "@/features/categories/cards/category-base-card"
+import { useParentCategoriesQuery } from "@/gql/hooks/categories"
 
+import { ContentLayout } from "@/components/ui/content-layout"
 import { Text } from "@/components/ui/text"
 
 export default function Index() {
-  const query = useQuery({
-    queryKey: ["categories"],
-    queryFn: () => _client.request(CategoriesDocument),
-  })
+  const query = useParentCategoriesQuery()
 
   if (query.isLoading) {
     return <Text>loading..</Text>
   }
 
   if (query.error) {
-    return <Text>Something went wrong..</Text>
+    return <Text>Something went wrong.. </Text>
   }
 
-  return query.data?.categories?.map((category) => {
-    return <Text key={category?.id}>{category?.name}</Text>
-  })
+  if (!query.data?.parentCategories) {
+    return <Text>No Categories</Text>
+  }
+
+  const { parentCategories } = query.data
+
+  const categories = parentCategories.map((c) => (c ? <CategoryBaseCard key={c.id} {...c} /> : null))
+
+  return <ContentLayout title="Kategorije">{categories}</ContentLayout>
 }

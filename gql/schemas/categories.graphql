@@ -4,3 +4,10 @@ query categories {
     name
   }
 }
+
+query parentCategories {
+  parentCategories {
+    id
+    name
+  }
+}
