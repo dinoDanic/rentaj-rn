@@ -1,7 +1,10 @@
 import { PropsWithChildren } from "react";
 import { useSession } from "../ctx";
-import { View, Button } from "react-native";
-import { SmileIcon } from "lucide-react-native";
+import { router } from "expo-router";
+import { routes } from "@/lib/routes";
+import { Button } from "@/components/ui/button";
+import { Text } from "@/components/ui/text";
+import { View } from "react-native";
 
 type Props = PropsWithChildren;
 
@@ -13,16 +16,24 @@ export default function SecureView(props: Props) {
 
 const RenderContent = () => {
   return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-        gap: 12,
-      }}
-    >
-      <Button title="Login to view" />
-      <SmileIcon color={"blue"} />
+    <View className="flex-1 items-center justify-center gap-2">
+      <Button
+        variant="secondary"
+        onPress={() => {
+          router.push(routes.login);
+        }}
+      >
+        <Text>Login</Text>
+      </Button>
+      <Text>or</Text>
+      <Button
+        variant="secondary"
+        onPress={() => {
+          router.push(routes.login);
+        }}
+      >
+        <Text>Register</Text>
+      </Button>
     </View>
   );
 };

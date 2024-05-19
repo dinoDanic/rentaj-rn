@@ -3,7 +3,7 @@ import "react-native-reanimated";
 import "../styles/global.css";
 
 import { Providers } from "@/project/providers";
-import { AppTabs } from "./(components)/app-tabs";
+import { Stack } from "expo-router";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -11,7 +11,10 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   return (
     <Providers>
-      <AppTabs />
+      <Stack screenOptions={{ headerShown: true }}>
+        <Stack.Screen name="(app)" options={{ headerShown: false }} />
+        <Stack.Screen name="login-modal" options={{ presentation: "modal" }} />
+      </Stack>
     </Providers>
   );
 }
