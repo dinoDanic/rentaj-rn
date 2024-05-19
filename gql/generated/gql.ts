@@ -14,6 +14,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "mutation createSession($input: CreateSessionInput!) {\n  createSession(input: $input) {\n    token\n    user {\n      id\n    }\n  }\n}": types.CreateSessionDocument,
+    "query categories {\n  categories {\n    id\n    name\n  }\n}": types.CategoriesDocument,
 };
 
 /**
@@ -34,6 +35,10 @@ export function graphql(source: string): unknown;
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "mutation createSession($input: CreateSessionInput!) {\n  createSession(input: $input) {\n    token\n    user {\n      id\n    }\n  }\n}"): (typeof documents)["mutation createSession($input: CreateSessionInput!) {\n  createSession(input: $input) {\n    token\n    user {\n      id\n    }\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "query categories {\n  categories {\n    id\n    name\n  }\n}"): (typeof documents)["query categories {\n  categories {\n    id\n    name\n  }\n}"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
