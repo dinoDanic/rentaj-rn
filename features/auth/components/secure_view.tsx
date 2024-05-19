@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 import { useSession } from "../ctx";
-import { View, Text, Button } from "react-native";
+import { View, Button } from "react-native";
 import { SmileIcon } from "lucide-react-native";
 
 type Props = PropsWithChildren;
