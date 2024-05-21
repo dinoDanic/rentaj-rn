@@ -16,6 +16,7 @@ export const AppTabs = () => {
         }}
       />
       <Tabs
+        sceneContainerStyle={{ padding: 10 }}
         screenOptions={{
           headerShown: false,
           headerBackground: () => <Text>lol</Text>,

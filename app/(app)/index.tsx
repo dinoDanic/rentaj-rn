@@ -1,5 +1,6 @@
-import { CategoryBaseCard } from "@/features/categories/cards/category-base-card"
+import { CategoryInfoCard } from "@/features/categories/cards/category-info-card"
 import { useParentCategoriesQuery } from "@/gql/hooks/categories"
+import { FlatList, View } from "react-native"
 
 import { ContentLayout } from "@/components/ui/content-layout"
 import { Text } from "@/components/ui/text"
@@ -21,7 +22,14 @@ export default function Index() {
 
   const { parentCategories } = query.data
 
-  const categories = parentCategories.map((c) => (c ? <CategoryBaseCard key={c.id} {...c} /> : null))
-
-  return <ContentLayout title="Kategorije">{categories}</ContentLayout>
+  return (
+    <ContentLayout title="Kategorije">
+      <FlatList
+        horizontal
+        data={parentCategories}
+        renderItem={(c) => (c.item ? <CategoryInfoCard {...c.item} /> : null)}
+        ItemSeparatorComponent={() => <View className="w-2" />}
+      />
+    </ContentLayout>
+  )
 }
