@@ -9,5 +9,6 @@ query parentCategories {
   parentCategories {
     id
     name
+    imageUrl
   }
 }

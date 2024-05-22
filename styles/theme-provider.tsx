@@ -21,8 +21,10 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = useState(false)
 
   useEffect(() => {
-    ;(async () => {
+    ; (async () => {
       const theme = await AsyncStorage.getItem("theme")
+      console.log(theme)
+
       if (!theme) {
         AsyncStorage.setItem("theme", colorScheme)
         setIsColorSchemeLoaded(true)

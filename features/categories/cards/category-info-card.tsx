@@ -3,6 +3,11 @@ import { Category } from "@/gql/generated/graphql"
 
 import { InfoCard } from "@/components/ui/cards/info-card"
 
-export const CategoryInfoCard: FC<Category> = (category) => {
-  return <InfoCard title={category.name} />
+type CategoryInfoCardProps = {
+  category: Category
+  className?: string
+}
+
+export const CategoryInfoCard: FC<CategoryInfoCardProps> = (props) => {
+  return <InfoCard className={props.className} source={props.category?.imageUrl} title={props.category.name} />
 }
