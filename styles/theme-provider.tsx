@@ -1,4 +1,11 @@
 import { PropsWithChildren, useEffect, useState } from "react"
+import {
+  Ubuntu_300Light,
+  Ubuntu_400Regular,
+  Ubuntu_500Medium,
+  Ubuntu_700Bold,
+  useFonts,
+} from "@expo-google-fonts/ubuntu"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { ThemeProvider as ReactThemeProvider, Theme } from "@react-navigation/native"
 import { SplashScreen } from "expo-router"
@@ -20,8 +27,15 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
   const { colorScheme, setColorScheme, isDarkColorScheme } = useColorScheme()
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = useState(false)
 
+  let [fontsLoaded] = useFonts({
+    Ubuntu_500Medium,
+    Ubuntu_400Regular,
+    Ubuntu_300Light,
+    Ubuntu_700Bold,
+  })
+
   useEffect(() => {
-    ; (async () => {
+    ;(async () => {
       const theme = await AsyncStorage.getItem("theme")
       console.log(theme)
 
@@ -43,8 +57,9 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  if (!isColorSchemeLoaded) {
+  if (!isColorSchemeLoaded || !fontsLoaded) {
     return null
   }
+
   return <ReactThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>{children}</ReactThemeProvider>
 }

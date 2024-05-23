@@ -25,6 +25,7 @@ const RenderContent = () => {
   if (isLoading) {
     return <Text>Loading..</Text>
   }
+
   return (
     <FlatList
       horizontal
