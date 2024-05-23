@@ -26,7 +26,7 @@ export const InfoCard: FC<Props> = (props) => {
   )
 
   const withoutImage = (
-    <View className="flex-1 items-center justify-center">
+    <View className="flex-1  items-center justify-center">
       <ImageOffIcon color="gray" />
     </View>
   )
@@ -34,7 +34,7 @@ export const InfoCard: FC<Props> = (props) => {
   const image = haveImage ? withImage : withoutImage
 
   return (
-    <BaseCard className={cn("p-0", props.className)}>
+    <BaseCard className={cn("h-[140] w-[120] p-0", props.className)}>
       <View className="h-[100] w-[120]">{image}</View>
       <View className="px-2 py-4">
         <Small numberOfLines={1} ellipsizeMode="tail">

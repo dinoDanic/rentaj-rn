@@ -1,5 +1,6 @@
 import * as SplashScreen from "expo-splash-screen"
 
+import "react-native-gesture-handler"
 import "react-native-reanimated"
 import "../styles/global.css"
 
