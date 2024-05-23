@@ -8,5 +8,7 @@ type BaseCardProps = {
 } & PropsWithChildren
 
 export const BaseCard: FC<BaseCardProps> = ({ children, className }) => {
-  return <View className={cn("overflow-hidden rounded-lg border border-border p-3", className)}>{children}</View>
+  return (
+    <View className={cn("overflow-hidden rounded-lg border border-border bg-card p-3", className)}>{children}</View>
+  )
 }

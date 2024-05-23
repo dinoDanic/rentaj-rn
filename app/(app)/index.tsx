@@ -1,5 +1,6 @@
 import { CategoryInfoCard } from "@/features/categories/cards/category-info-card"
 import { useParentCategoriesQuery } from "@/gql/hooks/categories"
+import { FlashList } from "@shopify/flash-list"
 import { FlatList, View } from "react-native"
 
 import { ContentLayout } from "@/components/ui/content-layout"
@@ -20,14 +21,14 @@ const RenderContent = () => {
     return <Text>{error.name}</Text>
   }
 
-  const { parentCategories } = data || {}
-
   if (isLoading) {
     return <Text>Loading..</Text>
   }
 
+  const { parentCategories } = data || {}
+
   return (
-    <FlatList
+    <FlashList
       horizontal
       data={parentCategories}
       renderItem={(c) => {
@@ -40,6 +41,7 @@ const RenderContent = () => {
       }}
       ItemSeparatorComponent={() => <View className="w-2" />}
       showsHorizontalScrollIndicator={false}
+      estimatedItemSize={200}
     />
   )
 }

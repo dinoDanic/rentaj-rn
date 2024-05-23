@@ -37,7 +37,6 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
   useEffect(() => {
     ;(async () => {
       const theme = await AsyncStorage.getItem("theme")
-      console.log(theme)
 
       if (!theme) {
         AsyncStorage.setItem("theme", colorScheme)
