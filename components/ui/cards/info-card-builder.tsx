@@ -3,9 +3,7 @@ import { FlashList, ListRenderItem } from "@shopify/flash-list"
 import { MotiView } from "moti"
 import { FlatList, View } from "react-native"
 
-import { cn } from "@/lib/utils"
-
-import { Skeleton } from "../skeleton"
+import { InfoCardSkeleton } from "./info-card-skeleton"
 
 type InfoCardBuilderProps<D> = {
   isLoading: boolean
@@ -23,13 +21,15 @@ const fakeCategories: Category[] = [
 export const InfoCardBuilder = <D,>(props: InfoCardBuilderProps<D>) => {
   if (props.isLoading) {
     return (
-      <FlatList
-        data={fakeCategories}
-        horizontal
-        className="pl-2"
-        renderItem={() => <Skeleton className={cn("h-[140] w-[120] rounded-lg")} />}
-        ItemSeparatorComponent={() => <View className="w-2" />}
-      />
+      <MotiView from={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ type: "spring" }}>
+        <FlatList
+          data={fakeCategories}
+          horizontal
+          className="pl-2"
+          renderItem={() => <InfoCardSkeleton />}
+          ItemSeparatorComponent={() => <View className="w-2" />}
+        />
+      </MotiView>
     )
   }
 

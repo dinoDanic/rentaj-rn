@@ -14,6 +14,17 @@ export type InfoCardProps = {
   className?: string
 }
 
+export const infoCardConst = {
+  height: {
+    image: "h-[100]",
+    content: "h-[40]",
+    total: "h-[140]",
+  },
+  width: {
+    total: "w-[120]",
+  },
+}
+
 type Props = InfoCardProps
 
 export const InfoCard: FC<Props> = (props) => {
@@ -35,8 +46,8 @@ export const InfoCard: FC<Props> = (props) => {
   const image = haveImage ? withImage : withoutImage
 
   return (
-    <BaseCard className={cn("h-[140] w-[120] p-0", props.className)}>
-      <View className="h-[100] w-[120]">{image}</View>
+    <BaseCard className={cn(infoCardConst.width.total, infoCardConst.height.total, "p-0", props.className)}>
+      <View className={cn(infoCardConst.height.image, infoCardConst.width.total)}>{image}</View>
       <View className="px-2 py-4">
         <Small numberOfLines={1} ellipsizeMode="tail">
           {props.title}
