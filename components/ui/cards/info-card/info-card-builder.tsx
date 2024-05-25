@@ -21,7 +21,7 @@ const fakeCategories: Category[] = [
 export const InfoCardBuilder = <D,>(props: InfoCardBuilderProps<D>) => {
   if (props.isLoading) {
     return (
-      <MotiView from={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ type: "spring" }}>
+      <MotiView from={{ opacity: 0 }} exit={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ type: "spring" }}>
         <FlatList
           data={fakeCategories}
           horizontal

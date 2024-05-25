@@ -2,7 +2,7 @@ import { View } from "react-native"
 
 import { cn } from "@/lib/utils"
 
-import { Skeleton } from "../skeleton"
+import { Skeleton } from "../../skeleton"
 import { infoCardConst } from "./info-card"
 
 export const InfoCardSkeleton = () => {

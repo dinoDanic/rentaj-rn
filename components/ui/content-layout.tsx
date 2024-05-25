@@ -11,7 +11,7 @@ type Props = PropsWithChildren & {
 export const ContentLayout: FC<Props> = (props) => {
   return (
     <View className="gap-2">
-      <H4>{props.title}</H4>
+      <H4 className="px-screen">{props.title}</H4>
       <View className={props.childrenClassName}>{props.children}</View>
     </View>
   )

@@ -11,12 +11,12 @@ export const AppTabs = () => {
   return (
     <>
       <SafeAreaView
-        style={{
-          backgroundColor: isDarkColorScheme ? NAV_THEME.dark.background : NAV_THEME.light.background,
-        }}
+      // className="bg-red-300"
+      // style={{
+      //   backgroundColor: isDarkColorScheme ? NAV_THEME.dark.background : NAV_THEME.light.background,
+      // }}
       />
       <Tabs
-        sceneContainerStyle={{ padding: 10 }}
         screenOptions={{
           headerShown: false,
           headerBackground: () => <Text>lol</Text>,
