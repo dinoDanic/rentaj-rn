@@ -2,7 +2,7 @@ import { FC } from "react"
 import { Image } from "expo-image"
 import { StyleSheet, View } from "react-native"
 
-import { ImageIcon, ImageOffIcon } from "@/lib/icons/icon-with-classname"
+import { ImageIcon } from "@/lib/icons/icon-with-classname"
 import { cn } from "@/lib/utils"
 
 import { Small } from "../../typography"
@@ -16,9 +16,9 @@ export type InfoCardProps = {
 
 export const infoCardConst = {
   height: {
-    image: "h-[100]",
+    image: "h-[110]",
     content: "h-[40]",
-    total: "h-[140]",
+    total: "h-[150]",
   },
   width: {
     total: "w-[120]",
@@ -38,7 +38,7 @@ export const InfoCard: FC<Props> = (props) => {
   )
 
   const withoutImage = (
-    <View className="flex-1 items-center justify-center bg-border">
+    <View className="flex-1 items-center justify-center">
       <ImageIcon className="text-muted-foreground/50" />
     </View>
   )
@@ -48,7 +48,7 @@ export const InfoCard: FC<Props> = (props) => {
   return (
     <BaseCard className={cn(infoCardConst.width.total, infoCardConst.height.total, "p-0", props.className)}>
       <View className={cn(infoCardConst.height.image, infoCardConst.width.total)}>{image}</View>
-      <View className="px-sm py-md">
+      <View className="h-full bg-muted px-sm py-md">
         <Small numberOfLines={1} ellipsizeMode="tail">
           {props.title}
         </Small>
@@ -62,6 +62,5 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     backgroundColor: "#0553",
-    // borderRadius: 10,
   },
 })

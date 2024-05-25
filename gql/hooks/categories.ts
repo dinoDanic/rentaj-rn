@@ -3,14 +3,19 @@ import { useQuery } from "@tanstack/react-query"
 
 import { CategoriesDocument, ParentCategoriesDocument } from "../generated/graphql"
 
+export const queryCategorieKeys = {
+  categires: ["categories"],
+  parentCategories: ["parent-categories"],
+}
+
 export const useCategoriesQuery = () =>
   useQuery({
-    queryKey: ["categories"],
+    queryKey: queryCategorieKeys.categires,
     queryFn: () => _client.request(CategoriesDocument),
   })
 
 export const useParentCategoriesQuery = () =>
   useQuery({
-    queryKey: ["parent-categories"],
+    queryKey: queryCategorieKeys.parentCategories,
     queryFn: () => _client.request(ParentCategoriesDocument),
   })
