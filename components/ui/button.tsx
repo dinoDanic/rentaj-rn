@@ -1,5 +1,5 @@
 import * as React from "react"
-import { TextClassContext } from "~/components/ui/text"
+import { Text, TextClassContext } from "~/components/ui/text"
 import { cn } from "~/lib/utils"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Pressable } from "react-native"
@@ -57,7 +57,10 @@ const buttonTextVariants = cva(
   }
 )
 
-type ButtonProps = React.ComponentPropsWithoutRef<typeof Pressable> & VariantProps<typeof buttonVariants>
+type ButtonProps = React.ComponentPropsWithoutRef<typeof Pressable> &
+  VariantProps<typeof buttonVariants> & {
+    title: string
+  }
 
 const Button = React.forwardRef<React.ElementRef<typeof Pressable>, ButtonProps>(
   ({ className, variant, size, ...props }, ref) => {
@@ -73,7 +76,9 @@ const Button = React.forwardRef<React.ElementRef<typeof Pressable>, ButtonProps>
           ref={ref}
           role="button"
           {...props}
-        />
+        >
+          <Text>{props.title}</Text>
+        </Pressable>
       </TextClassContext.Provider>
     )
   }

@@ -1,14 +1,15 @@
+import { CategoryInfoCard } from "@/features/categories/cards/category-info-card"
 import { useParentCategoriesQuery } from "@/gql/hooks/categories"
 
 import { InfoCardBuilder } from "@/components/ui/cards/info-card/info-card-builder"
 import { ContentLayout } from "@/components/ui/content-layout"
 import { Text } from "@/components/ui/text"
 
-import { CategoryInfoCard } from "../cards/category-info-card"
+import { ShowMoreCategories } from "./show-more-categories"
 
 export const RenderInfoCategories = () => {
   return (
-    <ContentLayout title="Kategorije">
+    <ContentLayout title="Kategorije" action={<ShowMoreCategories />}>
       <RenderContent />
     </ContentLayout>
   )
