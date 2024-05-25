@@ -30,7 +30,12 @@ export const HeroCardBuilder = <D,>(props: Props<D>) => {
       <View className="flex-row items-center justify-center gap-xs">
         {props.data.map((_, index) => {
           const isActive = index === activeIndex
-          return <View className={cn("h-2 w-2 rounded-xl bg-muted transition-all", isActive && "bg-white")} />
+          return (
+            <View
+              key={index}
+              className={cn("h-2 w-2 rounded-xl bg-muted transition-all", isActive && "bg-muted-foreground")}
+            />
+          )
         })}
       </View>
     </View>
