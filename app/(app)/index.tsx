@@ -4,7 +4,7 @@ import { View } from "react-native"
 
 export default function Index() {
   return (
-    <View className="gap-3xl">
+    <View className="gap-2xl">
       <RenderHeroFeature />
       <RenderInfoCategories />
     </View>
