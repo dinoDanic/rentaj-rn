@@ -1,0 +1,44 @@
+query searchItems($after: String, $before: String, $first: Int, $last: Int, $input: SearchInput) {
+  searchItems(after: $after, before: $before, first: $first, last: $last, input: $input) {
+    edges {
+      cursor
+      node {
+        name
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+      startCursor
+    }
+  }
+}
+
+query searchPage($after: String, $before: String, $first: Int, $last: Int, $input: SearchInput) {
+  searchItems(after: $after, before: $before, first: $first, last: $last, input: $input) {
+    edges {
+      cursor
+      node {
+        name
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+      startCursor
+    }
+  }
+  searchCategories(input: $input) {
+    id
+    name
+  }
+}
+
+query searchCategories($input: SearchInput) {
+  searchCategories(input: $input) {
+    id
+    name
+  }
+}

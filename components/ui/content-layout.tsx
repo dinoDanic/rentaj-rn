@@ -11,7 +11,7 @@ type Props = PropsWithChildren & {
 
 export const ContentLayout: FC<Props> = (props) => {
   return (
-    <View className="gap-lg">
+    <View className="gap-md">
       <View className="flex-row justify-between px-screen">
         <H4>{props.title}</H4>
         {props.action && props.action}
