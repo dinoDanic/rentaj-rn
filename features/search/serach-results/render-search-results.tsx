@@ -2,9 +2,10 @@ import { useEffect, useState } from "react"
 import { useSearchPage } from "@/gql/hooks/search"
 import { useDebounce } from "@/helpers/use-debounce"
 import { MotiView } from "moti"
-import { View } from "react-native"
+import { ActivityIndicator, View } from "react-native"
 
-import { Large } from "@/components/ui/typography"
+import { Text } from "@/components/ui/text"
+import { Large, Small } from "@/components/ui/typography"
 
 import { useSearch } from "../hooks/use-search"
 import { CategorySearchResults } from "./category-search-results"
@@ -34,7 +35,7 @@ export const RenderSearchResults = () => {
   if (noSearchResults)
     return (
       <MotiView from={{ opacity: 0 }} exit={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ type: "spring" }}>
-        <Large>Nema rezultata</Large>
+        <Text className="text-center">Nema rezultata</Text>
       </MotiView>
     )
 
@@ -42,6 +43,7 @@ export const RenderSearchResults = () => {
     <View className="gap-lg">
       {haveItems && <ItemsSearchResults query={searchQuery} />}
       {haveCategories && <CategorySearchResults query={searchQuery} />}
+      {!haveItems && !haveCategories && <ActivityIndicator />}
     </View>
   )
 }
