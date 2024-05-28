@@ -21,6 +21,11 @@ query searchPage($after: String, $before: String, $first: Int, $last: Int, $inpu
       cursor
       node {
         name
+        pricePerDay
+        delivery
+        location {
+          city
+        }
       }
     }
     pageInfo {
@@ -33,6 +38,7 @@ query searchPage($after: String, $before: String, $first: Int, $last: Int, $inpu
   searchCategories(input: $input) {
     id
     name
+    itemsCount
   }
 }
 

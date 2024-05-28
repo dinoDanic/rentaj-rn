@@ -136,7 +136,7 @@ const Small = React.forwardRef<TextRef, SlottableTextProps>(({ className, asChil
   const Component = asChild ? Slot.Text : RNText
   return (
     <Component
-      className={cn("font-medium text-sm leading-none text-foreground web:select-text", className)}
+      className={cn("font-medium text-sm leading-4 text-foreground web:select-text", className)}
       ref={ref}
       {...props}
     />

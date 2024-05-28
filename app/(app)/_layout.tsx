@@ -14,17 +14,17 @@ export default function AppLayout() {
         }}
       >
         <Tabs.Screen
+          name="index"
+          options={{
+            tabBarIcon: ({ color }) => <HomeIcon color={color} />,
+          }}
+        />
+        <Tabs.Screen
           name="search"
           options={{
             headerShown: true,
             header: () => <RenderSearchHeader />,
             tabBarIcon: ({ color }) => <SearchIcon color={color} />,
-          }}
-        />
-        <Tabs.Screen
-          name="index"
-          options={{
-            tabBarIcon: ({ color }) => <HomeIcon color={color} />,
           }}
         />
         <Tabs.Screen

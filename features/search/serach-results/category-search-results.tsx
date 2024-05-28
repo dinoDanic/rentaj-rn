@@ -17,7 +17,9 @@ export const CategorySearchResults = (props: Props) => {
       <View className="gap-md px-screen">
         <BootyBayCardBuilder
           data={props.query.data?.searchCategories}
-          renderItem={(e) => (e.item ? <BootyBayCard title={e.item.name} /> : null)}
+          renderItem={(e) =>
+            e.item ? <BootyBayCard description={`${e.item.itemsCount} Proizvoda`} title={e.item.name} /> : null
+          }
         />
       </View>
     </ContentLayout>

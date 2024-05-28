@@ -2,8 +2,8 @@ import { SearchPageQuery } from "@/gql/generated/graphql"
 import { UseQueryResult } from "@tanstack/react-query"
 
 import { Button } from "@/components/ui/button"
-import { InfoCard } from "@/components/ui/cards/info-card/info-card"
-import { InfoCardBuilder } from "@/components/ui/cards/info-card/info-card-builder"
+import { TallCard } from "@/components/ui/cards/tall-card/tall-card"
+import { TallCardBuilder } from "@/components/ui/cards/tall-card/tall-card-builder"
 import { ContentLayout } from "@/components/ui/content-layout"
 
 type Props = {
@@ -13,10 +13,18 @@ type Props = {
 export default function ItemsSearchResults(props: Props) {
   return (
     <ContentLayout title="Proizvodi" action={<SeeAll />}>
-      <InfoCardBuilder
-        isLoading={props.query.isLoading}
+      <TallCardBuilder
         data={props.query.data?.searchItems?.edges}
-        renderItem={(e) => <InfoCard title={e.item?.node?.name ?? "no nome"} />}
+        renderItem={(e) => {
+          const { node: item } = e.item || {}
+          if (!item) return null
+          const city = item.location.city
+
+          const withDelivery = `${city} 🚗`
+          const withoutDelivery = city
+          const title = item.delivery ? withDelivery : withoutDelivery
+          return <TallCard text1={item.name} price={item.pricePerDay} footer={{ title: title }} />
+        }}
       />
     </ContentLayout>
   )

@@ -8,6 +8,7 @@ import { Small } from "../../typography"
 type BootyBayCardProps = {
   source?: string
   title: string
+  description?: string
 }
 
 export const BootyBayCard = (props: BootyBayCardProps) => {
@@ -26,10 +27,10 @@ export const BootyBayCard = (props: BootyBayCardProps) => {
         />
         <View className="flex-1 justify-between">
           <Text>{props.title}</Text>
-          <Small>{props.title}</Small>
+          {props.description && <Small className="text-muted-foreground">{props.description}</Small>}
         </View>
       </View>
-      <Divider />
+      <Divider className="mt-md" />
     </View>
   )
 }
