@@ -6,6 +6,7 @@ export const routes = {
   loginModal: "login-modal",
   explore: "(explore)",
   rent: "(rent)",
+  loginWithEmail: "login-with-email",
 } as const
 
 export type RouteKeys = keyof typeof routes

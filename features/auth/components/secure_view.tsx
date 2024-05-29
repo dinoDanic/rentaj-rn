@@ -22,7 +22,7 @@ const RenderContent = () => {
       <Button
         variant="secondary"
         onPress={() => {
-          router.push(routes.login)
+          router.push(routes.loginModal)
         }}
         title="Login"
       />
@@ -30,7 +30,7 @@ const RenderContent = () => {
       <Button
         variant="secondary"
         onPress={() => {
-          router.push(routes.login)
+          router.push(routes.loginModal)
         }}
         title="Register"
       />

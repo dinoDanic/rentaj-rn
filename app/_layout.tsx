@@ -17,7 +17,11 @@ export default function RootLayout() {
       <Stack screenOptions={{ headerShown: true }}>
         <Stack.Screen name={routes.explore} options={{ headerShown: false, animation: "fade" }} />
         <Stack.Screen name={routes.rent} options={{ headerShown: false, animation: "fade" }} />
-        <Stack.Screen name={routes.loginModal} options={{ presentation: "modal", animation: "flip" }} />
+        <Stack.Screen
+          name={routes.loginModal}
+          options={{ headerShown: false, presentation: "modal", animation: "flip" }}
+        />
+        <Stack.Screen name={routes.loginWithEmail} options={{ headerShown: false, presentation: "modal" }} />
       </Stack>
     </Providers>
   )
