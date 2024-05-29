@@ -1,4 +1,4 @@
-import { ImageIcon, ImageOffIcon, KeyIcon, LucideIcon, MailIcon } from "lucide-react-native"
+import { ImageIcon, ImageOffIcon, KeyIcon, LucideIcon, MailIcon, TelescopeIcon } from "lucide-react-native"
 import { cssInterop } from "nativewind"
 
 export function iconWithClassName(icon: LucideIcon) {
@@ -17,5 +17,6 @@ iconWithClassName(ImageOffIcon)
 iconWithClassName(ImageIcon)
 iconWithClassName(MailIcon)
 iconWithClassName(KeyIcon)
+iconWithClassName(TelescopeIcon)
 
-export { ImageOffIcon, ImageIcon, MailIcon, KeyIcon }
+export { ImageOffIcon, ImageIcon, MailIcon, KeyIcon, TelescopeIcon }
