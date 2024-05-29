@@ -22,7 +22,7 @@ export const RenderSearchHeader = () => {
   // }
 
   return (
-    <View className="gap-md px-screen">
+    <View className="px-screen pb-md">
       <Input placeholder="Pretraži robu ili kategoriju" value={query || ""} onChangeText={(value) => setQuery(value)} />
       {/* <Controller */}
       {/*   control={control} */}
