@@ -1,48 +1,50 @@
-import { RenderSearchHeader } from "@/features/search/search-header/render-search-header"
 import { Tabs } from "expo-router"
-import { HeartIcon, HomeIcon, MessageCircleIcon, SearchIcon, UserIcon } from "lucide-react-native"
+import { BoxIcon, CalendarFoldIcon, CircleCheckIcon, MessageCircleIcon, UserIcon } from "lucide-react-native"
 
 import { SafeAreaView } from "@/components/ui/safe-area-view"
 
-export default function AppLayout() {
+export default function ExploreLayout() {
   return (
     <>
       <SafeAreaView />
       <Tabs
         screenOptions={{
           headerShown: false,
-          tabBarShowLabel: false,
+          // tabBarShowLabel: false,
         }}
       >
         <Tabs.Screen
           name="index"
           options={{
-            tabBarIcon: ({ color }) => <HomeIcon color={color} />,
+            title: "Danas",
+            tabBarIcon: ({ color }) => <CircleCheckIcon color={color} />,
           }}
         />
         <Tabs.Screen
-          name="search"
+          name="calendar"
           options={{
-            headerShown: true,
-            header: () => <RenderSearchHeader />,
-            tabBarIcon: ({ color }) => <SearchIcon color={color} />,
+            title: "Kalendar",
+            tabBarIcon: ({ color }) => <CalendarFoldIcon color={color} />,
           }}
         />
         <Tabs.Screen
-          name="favorites"
+          name="listings"
           options={{
-            tabBarIcon: ({ color }) => <HeartIcon color={color} />,
+            title: "Oglasi",
+            tabBarIcon: ({ color }) => <BoxIcon color={color} />,
           }}
         />
         <Tabs.Screen
           name="messages"
           options={{
+            title: "Poruke",
             tabBarIcon: ({ color }) => <MessageCircleIcon color={color} />,
           }}
         />
         <Tabs.Screen
           name="profile"
           options={{
+            title: "Profil",
             tabBarIcon: ({ color }) => <UserIcon color={color} />,
           }}
         />

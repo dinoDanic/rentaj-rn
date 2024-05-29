@@ -24,18 +24,16 @@ const RenderContent = () => {
         onPress={() => {
           router.push(routes.login)
         }}
-      >
-        <Text>Login</Text>
-      </Button>
+        title="Login"
+      />
       <Text>or</Text>
       <Button
         variant="secondary"
         onPress={() => {
           router.push(routes.login)
         }}
-      >
-        <Text>Register</Text>
-      </Button>
+        title="Register"
+      />
     </View>
   )
 }

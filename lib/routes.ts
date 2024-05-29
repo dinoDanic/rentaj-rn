@@ -3,5 +3,10 @@ const index = "/"
 
 export const routes = {
   index: index,
-  login: "/login-modal",
-}
+  loginModal: "login-modal",
+  explore: "(explore)",
+  rent: "(rent)",
+} as const
+
+export type RouteKeys = keyof typeof routes
+export type RouteValues = (typeof routes)[RouteKeys]
