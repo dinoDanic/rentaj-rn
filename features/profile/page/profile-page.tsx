@@ -1,3 +1,4 @@
+import { LogoutAction } from "@/features/auth/components/logout-action"
 import SecureView from "@/features/auth/components/secure_view"
 
 import { ViewSwithcer } from "../components/view-switcher"
@@ -7,6 +8,7 @@ export const ProfilePage = () => {
     <>
       <SecureView>
         <ViewSwithcer />
+        <LogoutAction />
       </SecureView>
     </>
   )

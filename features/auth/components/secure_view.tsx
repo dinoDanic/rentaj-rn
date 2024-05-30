@@ -1,18 +1,28 @@
 import { PropsWithChildren } from "react"
+import { useMe } from "@/gql/hooks/user"
 import { router } from "expo-router"
-import { View } from "react-native"
+import { ActivityIndicator, View } from "react-native"
 
 import { routes } from "@/lib/routes"
 import { Button } from "@/components/ui/button"
 import { Text } from "@/components/ui/text"
 
-import { useSession } from "../ctx"
-
 type Props = PropsWithChildren
 
 export default function SecureView(props: Props) {
-  const { session } = useSession()
-  if (!session) return <RenderContent />
+  const { isLoading, data } = useMe({}, { retry: 0 })
+  const { account } = data?.me || {}
+  // const { session } = useSession()
+  //
+  if (isLoading)
+    return (
+      <View className="flex-1 items-center justify-center">
+        <ActivityIndicator />
+      </View>
+    )
+
+  if (!account?.id) return <RenderContent />
+
   return props.children
 }
 

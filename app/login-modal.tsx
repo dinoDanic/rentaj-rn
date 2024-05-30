@@ -6,16 +6,18 @@ import { SafeAreaView, View } from "react-native"
 
 export default function LoginModal() {
   return (
-    <View className="flex-1">
-      <HeaderImage />
-      <View className="flex-1 items-center gap-2xl px-screen pt-xl">
-        <HeaderText />
-        <View className="w-full flex-1 justify-between">
-          <Actions />
-          <Footer />
+    <>
+      <View className="flex-1">
+        <HeaderImage />
+        <View className="flex-1 items-center gap-2xl px-screen pt-xl">
+          <HeaderText />
+          <View className="w-full flex-1 justify-between">
+            <Actions />
+            <Footer />
+          </View>
         </View>
       </View>
       <SafeAreaView />
-    </View>
+    </>
   )
 }

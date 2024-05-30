@@ -20,7 +20,10 @@ export const Actions = () => {
           variant="secondary"
           title="Priava s Mailom"
           className="w-full"
-          onPress={() => router.push(routes.loginWithEmail)}
+          onPress={() => {
+            router.push("../")
+            router.push(routes.loginWithEmail)
+          }}
         />
       </View>
     </>

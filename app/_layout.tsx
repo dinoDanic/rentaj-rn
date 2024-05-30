@@ -21,7 +21,7 @@ export default function RootLayout() {
           name={routes.loginModal}
           options={{ headerShown: false, presentation: "modal", animation: "flip" }}
         />
-        <Stack.Screen name={routes.loginWithEmail} options={{ headerShown: false, presentation: "modal" }} />
+        <Stack.Screen name={routes.loginWithEmail} options={{ headerShown: true }} />
       </Stack>
     </Providers>
   )

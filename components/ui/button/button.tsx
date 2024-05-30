@@ -2,7 +2,7 @@ import * as React from "react"
 import { Text, TextClassContext } from "~/components/ui/text"
 import { cn } from "~/lib/utils"
 import { cva, type VariantProps } from "class-variance-authority"
-import { Pressable } from "react-native"
+import { ActivityIndicator, Pressable } from "react-native"
 
 import { WithSideIcon } from "./width-sideicon"
 
@@ -65,10 +65,12 @@ type ButtonProps = React.ComponentPropsWithoutRef<typeof Pressable> &
   VariantProps<typeof buttonVariants> & {
     title: string
     sideIcon?: React.ReactNode
+    loading?: boolean
   }
 
 const Button = React.forwardRef<React.ElementRef<typeof Pressable>, ButtonProps>(
   ({ className, variant, size, ...props }, ref) => {
+    const title = props.loading ? <ActivityIndicator className="text-primary-foreground" /> : <Text>{props.title}</Text>
     return (
       <TextClassContext.Provider
         value={cn(props.disabled && "web:pointer-events-none", buttonTextVariants({ variant, size }))}
@@ -83,7 +85,7 @@ const Button = React.forwardRef<React.ElementRef<typeof Pressable>, ButtonProps>
           {...props}
         >
           {props.sideIcon && <WithSideIcon>{props.sideIcon}</WithSideIcon>}
-          <Text>{props.title}</Text>
+          {title}
         </Pressable>
       </TextClassContext.Provider>
     )
