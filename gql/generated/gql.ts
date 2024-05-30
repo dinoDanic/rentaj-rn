@@ -13,7 +13,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "mutation createSession($input: CreateSessionInput!) {\n  createSession(input: $input) {\n    token\n    user {\n      id\n    }\n  }\n}": types.CreateSessionDocument,
+    "mutation createSession($input: CreateSessionInput!) {\n  createSession(input: $input) {\n    token\n    user {\n      id\n      email\n    }\n  }\n}": types.CreateSessionDocument,
     "query categories {\n  categories {\n    id\n    name\n  }\n}\n\nquery parentCategories {\n  parentCategories {\n    id\n    name\n    imageUrl\n  }\n}": types.CategoriesDocument,
     "query searchItems($after: String, $before: String, $first: Int, $last: Int, $input: SearchInput) {\n  searchItems(\n    after: $after\n    before: $before\n    first: $first\n    last: $last\n    input: $input\n  ) {\n    edges {\n      cursor\n      node {\n        name\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nquery searchPage($after: String, $before: String, $first: Int, $last: Int, $input: SearchInput) {\n  searchItems(\n    after: $after\n    before: $before\n    first: $first\n    last: $last\n    input: $input\n  ) {\n    edges {\n      cursor\n      node {\n        name\n        pricePerDay\n        delivery\n        location {\n          city\n        }\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  searchCategories(input: $input) {\n    id\n    name\n    itemsCount\n  }\n}\n\nquery searchCategories($input: SearchInput) {\n  searchCategories(input: $input) {\n    id\n    name\n  }\n}": types.SearchItemsDocument,
     "query me {\n  me {\n    account {\n      id\n    }\n  }\n}": types.MeDocument,
@@ -36,7 +36,7 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "mutation createSession($input: CreateSessionInput!) {\n  createSession(input: $input) {\n    token\n    user {\n      id\n    }\n  }\n}"): (typeof documents)["mutation createSession($input: CreateSessionInput!) {\n  createSession(input: $input) {\n    token\n    user {\n      id\n    }\n  }\n}"];
+export function graphql(source: "mutation createSession($input: CreateSessionInput!) {\n  createSession(input: $input) {\n    token\n    user {\n      id\n      email\n    }\n  }\n}"): (typeof documents)["mutation createSession($input: CreateSessionInput!) {\n  createSession(input: $input) {\n    token\n    user {\n      id\n      email\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

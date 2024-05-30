@@ -1,5 +1,5 @@
+import { useMe } from "@/features/auth/hooks/use-me"
 import { CreateSessionDocument, CreateSessionInput, CreateSessionMutationVariables } from "@/gql/generated/graphql"
-import { queryUserKeys } from "@/gql/hooks/user"
 import { _client } from "@/lib"
 import { ZodType } from "@/types"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -9,7 +9,6 @@ import { FormProvider, useForm } from "react-hook-form"
 import { View } from "react-native"
 import { z } from "zod"
 
-import { queryClient } from "@/lib/react-query/query-client"
 import { Button } from "@/components/ui/button"
 import { FormInput } from "@/components/ui/form/form-input"
 import { H1 } from "@/components/ui/typography"
@@ -20,6 +19,7 @@ const formSchema = z.object<ZodType<CreateSessionInput>>({
 })
 
 export default function LoginWithEmail() {
+  const { setMe } = useMe()
   const createSession = useMutation({
     mutationFn: (args: CreateSessionMutationVariables) => _client.request(CreateSessionDocument, args),
   })
@@ -42,7 +42,7 @@ export default function LoginWithEmail() {
         return
       }
       _client.setHeader("Authorization", `Bearer ${res.createSession.token}`)
-      queryClient.invalidateQueries({ queryKey: queryUserKeys.me })
+      setMe(res.createSession.user)
       router.back()
     } catch {
       onError()

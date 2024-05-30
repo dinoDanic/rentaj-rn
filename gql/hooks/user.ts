@@ -7,7 +7,7 @@ export const queryUserKeys = {
   me: ["me"],
 }
 
-export const useMe = (
+export const useMeQuery = (
   variables?: MeQueryVariables,
   options?: Partial<UseQueryOptions<MeQuery, Error>>
 ): UseQueryResult<MeQuery, Error> =>

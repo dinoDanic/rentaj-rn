@@ -1,13 +1,16 @@
-import { queryUserKeys } from "@/gql/hooks/user"
 import { _client } from "@/lib"
 
-import { queryClient } from "@/lib/react-query/query-client"
 import { Button } from "@/components/ui/button"
 
+import { useMe } from "../hooks/use-me"
+
 export const LogoutAction = () => {
+  const { setMe } = useMe()
+
   const logout = () => {
     _client.setHeader("Authorization", "")
-    queryClient.invalidateQueries({ queryKey: queryUserKeys.me })
+    setMe(null)
   }
+
   return <Button title="logout" onPress={() => logout()} />
 }

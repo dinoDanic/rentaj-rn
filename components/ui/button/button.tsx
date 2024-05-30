@@ -2,7 +2,7 @@ import * as React from "react"
 import { Text, TextClassContext } from "~/components/ui/text"
 import { cn } from "~/lib/utils"
 import { cva, type VariantProps } from "class-variance-authority"
-import { ActivityIndicator, Pressable } from "react-native"
+import { ActivityIndicator, Pressable, View } from "react-native"
 
 import { WithSideIcon } from "./width-sideicon"
 
@@ -50,7 +50,7 @@ const buttonTextVariants = cva(
       size: {
         default: "",
         sm: "",
-        lg: "native:text-lg",
+        lg: "text-lg",
         icon: "",
       },
     },
@@ -65,12 +65,24 @@ type ButtonProps = React.ComponentPropsWithoutRef<typeof Pressable> &
   VariantProps<typeof buttonVariants> & {
     title: string
     sideIcon?: React.ReactNode
+    icon?: React.ReactNode
     loading?: boolean
   }
 
 const Button = React.forwardRef<React.ElementRef<typeof Pressable>, ButtonProps>(
   ({ className, variant, size, ...props }, ref) => {
-    const title = props.loading ? <ActivityIndicator className="text-primary-foreground" /> : <Text>{props.title}</Text>
+    const titleContent = <Text>{props.title}</Text>
+
+    const titleWithIcon = (
+      <View className="flex-row items-center gap-sm">
+        {props.icon}
+        {titleContent}
+      </View>
+    )
+
+    const titleVariant = props.icon ? titleWithIcon : titleContent
+    const title = props.loading ? <ActivityIndicator className="text-primary-foreground" /> : titleVariant
+
     return (
       <TextClassContext.Provider
         value={cn(props.disabled && "web:pointer-events-none", buttonTextVariants({ variant, size }))}

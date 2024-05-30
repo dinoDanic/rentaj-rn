@@ -3,6 +3,7 @@ mutation createSession($input: CreateSessionInput!) {
     token
     user {
       id
+      email
     }
   }
 }
