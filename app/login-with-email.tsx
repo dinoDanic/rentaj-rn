@@ -3,12 +3,14 @@ import { CreateSessionDocument, CreateSessionInput, CreateSessionMutationVariabl
 import { _client } from "@/lib"
 import { ZodType } from "@/types"
 import { zodResolver } from "@hookform/resolvers/zod"
+import AsyncStorage from "@react-native-async-storage/async-storage"
 import { useMutation } from "@tanstack/react-query"
 import { router } from "expo-router"
 import { FormProvider, useForm } from "react-hook-form"
 import { View } from "react-native"
 import { z } from "zod"
 
+import { asyncStorage } from "@/lib/async-storage"
 import { Button } from "@/components/ui/button"
 import { FormInput } from "@/components/ui/form/form-input"
 import { H1 } from "@/components/ui/typography"
@@ -41,7 +43,7 @@ export default function LoginWithEmail() {
         onError()
         return
       }
-      _client.setHeader("Authorization", `Bearer ${res.createSession.token}`)
+      await AsyncStorage.setItem(asyncStorage.token, res.createSession.token)
       setMe(res.createSession.user)
       router.back()
     } catch {
@@ -50,7 +52,7 @@ export default function LoginWithEmail() {
   }
 
   return (
-    <View className="gap-lg bg-white p-screen py-3xl">
+    <View className="gap-lg bg-background p-screen py-3xl">
       <H1 className="text-center">Login</H1>
       <FormProvider {...form}>
         <FormInput<CreateSessionInput> name="email" placeholder="Email" keyboardType="email-address" />

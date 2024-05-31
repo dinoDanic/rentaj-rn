@@ -23,7 +23,7 @@ module.exports = {
         "9xl": "9.25rem",
       },
       padding: {
-        screen: "8",
+        screen: "16",
       },
       fontFamily: {
         extrabold: ["Ubuntu_700Bold"],

@@ -24,7 +24,7 @@ const buttonVariants = cva(
         default: "h-10 px-4 py-2 native:h-14 native:px-5 native:py-3",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8 native:h-14",
-        icon: "h-10 w-10",
+        icon: "h-10 w-10 rounded-full",
       },
     },
     defaultVariants: {
@@ -63,7 +63,7 @@ const buttonTextVariants = cva(
 
 type ButtonProps = React.ComponentPropsWithoutRef<typeof Pressable> &
   VariantProps<typeof buttonVariants> & {
-    title: string
+    title?: string
     sideIcon?: React.ReactNode
     icon?: React.ReactNode
     loading?: boolean
@@ -73,11 +73,13 @@ const Button = React.forwardRef<React.ElementRef<typeof Pressable>, ButtonProps>
   ({ className, variant, size, ...props }, ref) => {
     const titleContent = <Text>{props.title}</Text>
 
-    const titleWithIcon = (
+    const titleWithIcon = props.title ? (
       <View className="flex-row items-center gap-sm">
         {props.icon}
         {titleContent}
       </View>
+    ) : (
+      props.icon
     )
 
     const titleVariant = props.icon ? titleWithIcon : titleContent
@@ -103,7 +105,45 @@ const Button = React.forwardRef<React.ElementRef<typeof Pressable>, ButtonProps>
     )
   }
 )
+
 Button.displayName = "Button"
+
+// const Button = React.forwardRef<React.ElementRef<typeof Pressable>, ButtonProps>(
+//   ({ className, variant, size, ...props }, ref) => {
+//     const children = props.loading ? <ActivityIndicator /> : props.children
+//     return (
+//       <TextClassContext.Provider
+//         value={cn(props.disabled && "web:pointer-events-none", buttonTextVariants({ variant, size }))}
+//       >
+//         <Pressable
+//           className={cn(
+//             props.disabled && "opacity-50 web:pointer-events-none",
+//             buttonVariants({ variant, size, className })
+//           )}
+//           ref={ref}
+//           role="button"
+//           {...props}
+//         >
+//           {children}
+//         </Pressable>
+//       </TextClassContext.Provider>
+//     )
+//   }
+// )
+//
+// Button.displayName = "Button"
+//
+// const ButtonWithIcon = React.forwardRef<React.ElementRef<typeof Pressable>, ButtonProps>(
+//   ({ children, ...props }, ref) => {
+//     return (
+//       <Button {...props} ref={ref}>
+//         <View className="flex-row items-center gap-sm">
+//           <>{children}</>
+//         </View>
+//       </Button>
+//     )
+//   }
+// )
 
 export { Button, buttonTextVariants, buttonVariants }
 export type { ButtonProps }

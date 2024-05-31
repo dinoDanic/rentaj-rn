@@ -19,9 +19,14 @@ export default function RootLayout() {
         <Stack.Screen name={routes.rent} options={{ headerShown: false, animation: "fade" }} />
         <Stack.Screen
           name={routes.loginModal}
-          options={{ headerShown: false, presentation: "modal", animation: "flip" }}
+          options={{ headerShown: false, presentation: "modal", animation: "default" }}
         />
         <Stack.Screen name={routes.loginWithEmail} options={{ headerShown: true }} />
+        <Stack.Screen name={routes.createListingsModal} options={{ presentation: "modal" }} />
+        <Stack.Screen
+          name={routes.filterListingsModal}
+          options={{ presentation: "formSheet", headerTransparent: true }}
+        />
       </Stack>
     </Providers>
   )

@@ -1,0 +1,9 @@
+query myListings {
+  me {
+    items {
+      id
+      name
+      pricePerDay
+    }
+  }
+}

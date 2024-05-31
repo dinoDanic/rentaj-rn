@@ -1,4 +1,7 @@
 import { PropsWithChildren, useEffect, useState } from "react"
+import { useMe } from "@/features/auth/hooks/use-me"
+import { MeDocument } from "@/gql/generated/graphql"
+import { _client } from "@/lib"
 import {
   Ubuntu_300Light,
   Ubuntu_400Regular,
@@ -26,6 +29,7 @@ const DARK_THEME: Theme = {
 export const ThemeProvider = ({ children }: PropsWithChildren) => {
   const { colorScheme, setColorScheme, isDarkColorScheme } = useColorScheme()
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = useState(false)
+  const setMe = useMe().setMe
 
   let [fontsLoaded] = useFonts({
     Ubuntu_500Medium,
@@ -37,6 +41,14 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
   useEffect(() => {
     ;(async () => {
       const theme = await AsyncStorage.getItem("theme")
+      try {
+        const resMe = await _client.request(MeDocument)
+        if (resMe.me?.account) {
+          setMe(resMe.me.account)
+        }
+      } catch {
+        //
+      }
 
       if (!theme) {
         AsyncStorage.setItem("theme", colorScheme)

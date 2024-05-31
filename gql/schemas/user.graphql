@@ -2,6 +2,8 @@ query me {
   me {
     account {
       id
+      email
     }
   }
 }
+

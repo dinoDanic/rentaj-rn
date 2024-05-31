@@ -1,16 +1,18 @@
+import { ListingsHeader } from "@/features/listings/components/listings-header/listings-header"
 import { Tabs } from "expo-router"
 import { BoxIcon, CalendarFoldIcon, CircleCheckIcon, MessageCircleIcon, UserIcon } from "lucide-react-native"
 
-import { SafeAreaView } from "@/components/ui/safe-area-view"
+// import { SafeAreaView } from "@/components/ui/safe-area-view"
 
 export default function ExploreLayout() {
   return (
     <>
-      <SafeAreaView />
+      {/* <SafeAreaView /> */}
       <Tabs
         screenOptions={{
-          headerShown: false,
+          // headerShown: false,
           // tabBarShowLabel: false,
+          headerShadowVisible: false,
         }}
       >
         <Tabs.Screen
@@ -28,10 +30,13 @@ export default function ExploreLayout() {
           }}
         />
         <Tabs.Screen
-          name="listings"
+          name="listings/index"
           options={{
             title: "Oglasi",
+            headerTitle: "",
             tabBarIcon: ({ color }) => <BoxIcon color={color} />,
+            headerRight: () => <ListingsHeader />,
+            headerShadowVisible: true,
           }}
         />
         <Tabs.Screen

@@ -1,23 +1,26 @@
-import AsyncStorage from "@react-native-async-storage/async-storage"
+import { router } from "expo-router"
 import { create } from "zustand"
-import { createJSONStorage, persist } from "zustand/middleware"
+
+import { routes } from "@/lib/routes"
 
 import { RentajView } from "../types"
 
 type RentajState = {
   view: RentajView
   setView: (value: RentajView) => void
+  toggleView: () => void
 }
 
-export const useRentaj = create<RentajState>()(
-  persist(
-    (set) => ({
-      view: "explore",
-      setView: (value) => set({ view: value }),
-    }),
-    {
-      name: "user-rentaj",
-      storage: createJSONStorage(() => AsyncStorage),
+export const useRentaj = create<RentajState>()((set, store) => ({
+  view: "explore",
+  setView: (value) => set({ view: value }),
+  toggleView: () => {
+    if (store().view === "explore") {
+      router.replace(routes.rent)
+      set({ view: "rent" })
+    } else {
+      router.replace(routes.explore)
+      set({ view: "explore" })
     }
-  )
-)
+  },
+}))

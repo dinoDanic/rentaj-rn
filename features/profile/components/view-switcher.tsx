@@ -28,11 +28,10 @@ export const ViewSwithcer = () => {
   const title = view === "explore" ? "Prebaci na iznamljivanje" : "Prebaci na istraživanje"
   const bottom: number = visible ? 0 : -100
   return (
-    <View className="absolute bottom-sm w-full">
+    <View className="absolute bottom-lg w-full">
       <MotiView animate={{ bottom: bottom }} transition={{ type: "spring" }}>
         <Button
           className="self-center"
-          size="sm"
           icon={<ArrowLeftRightIcon className="text-primary-foreground" size={16} />}
           onPress={switchView}
           title={title}
