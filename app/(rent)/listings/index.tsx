@@ -1,28 +1,47 @@
 import SecureView from "@/features/auth/components/secure_view"
-import { useMyListingsQuery } from "@/gql/hooks/user"
-import { ActivityIndicator, ScrollView } from "react-native"
+import { ListingsHeader } from "@/features/listings/components/listings-header/listings-header"
+import { MyListingsQueryVariables } from "@/gql/generated/graphql"
+import { useMyListingsQuery } from "@/gql/hooks/items"
+import { FormProvider, useForm } from "react-hook-form"
+import { ActivityIndicator, ScrollView, View } from "react-native"
 
 import { BootyBayCard } from "@/components/ui/cards/bootybay-card/bootybay-card"
 import { BootyBayCardBuilder } from "@/components/ui/cards/bootybay-card/bootybay-card-builder"
-import { ContentLayout } from "@/components/ui/content-layout"
+import { FadeIn } from "@/components/animations/fade-in"
 
 export default function Listings() {
-  const { data, isLoading } = useMyListingsQuery()
+  const form = useForm<MyListingsQueryVariables>({ defaultValues: { input: { active: true } } })
+  const { data, isLoading } = useMyListingsQuery({ input: form.watch().input })
 
-  if (isLoading) return <ActivityIndicator />
-  if (!data?.me?.items) return null
-  return (
-    <ScrollView>
-      <SecureView>
-        <ContentLayout variant="leading" title="Moji oglasi" className="mt-2xl" childrenClassName="p-screen">
+  const loading = (
+    <FadeIn>
+      <ActivityIndicator />
+    </FadeIn>
+  )
+
+  const content = (
+    <FadeIn>
+      <ScrollView className="pt-sm">
+        <SecureView>
           <BootyBayCardBuilder
             data={data?.me?.items}
             renderItem={({ item }) =>
               item ? <BootyBayCard title={item.name} description={item.pricePerDay} key={item.id} /> : null
             }
           />
-        </ContentLayout>
-      </SecureView>
-    </ScrollView>
+        </SecureView>
+      </ScrollView>
+    </FadeIn>
+  )
+
+  const renderContent = isLoading ? loading : content
+
+  return (
+    <View className="px-screen">
+      <FormProvider {...form}>
+        <ListingsHeader />
+        {renderContent}
+      </FormProvider>
+    </View>
   )
 }

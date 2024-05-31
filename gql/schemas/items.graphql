@@ -1,6 +1,6 @@
-query myListings {
+query myListings($input: FilterItems) {
   me {
-    items {
+    items(input: $input) {
       id
       name
       pricePerDay

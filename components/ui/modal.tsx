@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { PropsWithChildren, useState } from "react"
 import { MotiView } from "moti"
 import { Pressable, Modal as RN_Modal, ModalProps as RN_ModalProps, View } from "react-native"
 
@@ -6,17 +6,14 @@ import { XIcon } from "@/lib/icons/icon-with-classname"
 
 import { Button } from "./button"
 import { ButtonProps } from "./button/button"
-import { Text } from "./text"
 
-type ModalProps = RN_ModalProps & {} & ButtonProps
+type ModalProps = RN_ModalProps & PropsWithChildren & ButtonProps
 
-export const Modal = ({ ...buttonProps }: ModalProps) => {
+export const Modal = ({ children, ...buttonProps }: ModalProps) => {
   const [visible, setVisible] = useState(false)
   const [opacity, setOpacity] = useState(0)
 
   const setVisiblity = (state: boolean) => {
-    console.log(state)
-
     if (state) {
       setVisible(state)
       setTimeout(() => {
@@ -39,7 +36,7 @@ export const Modal = ({ ...buttonProps }: ModalProps) => {
             <View className="flex-1 bg-black/50" />
           </MotiView>
         </Pressable>
-        <View className="absolute bottom-0 min-h-[5%] w-full rounded-t-2xl border border-border bg-background p-screen shadow-md">
+        <View className="absolute bottom-0 min-h-[120] w-full gap-lg rounded-t-2xl border border-border bg-background p-screen pb-3xl shadow-lg">
           <View className="items-end">
             <Button
               variant="ghost"
@@ -48,18 +45,7 @@ export const Modal = ({ ...buttonProps }: ModalProps) => {
               onPress={() => setVisiblity(!visible)}
             />
           </View>
-          <Text>Kita</Text>
-          <Text>Kita</Text>
-          <Text>Kita</Text>
-          <Text>Kita</Text>
-          <Text>Kita</Text>
-          <Text>Kita</Text>
-          <Text>Kita</Text>
-          <Text>Kita</Text>
-          <Text>Kita</Text>
-          <Text>Kita</Text>
-          <Text>Kita</Text>
-          <Text>Kita</Text>
+          {children}
         </View>
       </RN_Modal>
     </>
