@@ -6,7 +6,7 @@ import { MotiView } from "moti"
 import { View } from "react-native"
 
 import { ArrowLeftRightIcon } from "@/lib/icons/icon-with-classname"
-import { routes, RouteValues } from "@/lib/routes"
+import { routes } from "@/lib/routes"
 import { Button } from "@/components/ui/button"
 
 export const ViewSwithcer = () => {
@@ -15,7 +15,7 @@ export const ViewSwithcer = () => {
 
   const switchView = () => {
     const newView: RentajView = view === "explore" ? "rent" : "explore"
-    const newRoute: RouteValues = view === "explore" ? routes.rent : routes.explore
+    const newRoute = view === "explore" ? routes.rent : routes.explore
     setView(newView)
     router.replace(newRoute)
   }

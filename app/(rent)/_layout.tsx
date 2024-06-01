@@ -10,7 +10,7 @@ export default function ExploreLayout() {
       <Tabs
         screenOptions={{
           headerShown: false,
-          // tabBarShowLabel: false,
+          tabBarShowLabel: false,
           headerShadowVisible: false,
         }}
       >

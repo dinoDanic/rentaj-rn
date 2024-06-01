@@ -1,5 +1,6 @@
 import {
   ArrowLeftRightIcon,
+  ChevronLeft,
   ImageIcon,
   ImageOffIcon,
   KeyIcon,
@@ -37,8 +38,10 @@ iconWithClassName(SlidersVerticalIcon)
 iconWithClassName(XCircleIcon)
 iconWithClassName(XIcon)
 iconWithClassName(PlusIcon)
+iconWithClassName(ChevronLeft)
 
 export {
+  ChevronLeft,
   XIcon,
   PlusIcon,
   XCircleIcon,
