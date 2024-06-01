@@ -1,7 +1,13 @@
 import { _client } from "@/lib"
-import { useQuery, UseQueryOptions, UseQueryResult } from "@tanstack/react-query"
+import { useMutation, useQuery, UseQueryOptions, UseQueryResult } from "@tanstack/react-query"
 
-import { MyListingsDocument, MyListingsQuery, MyListingsQueryVariables } from "../generated/graphql"
+import {
+  CreateItemDocument,
+  CreateItemMutationVariables,
+  MyListingsDocument,
+  MyListingsQuery,
+  MyListingsQueryVariables,
+} from "../generated/graphql"
 
 export const queryListingsKeys = {
   myListings: (args: MyListingsQueryVariables) => ["my-listings", args],
@@ -15,4 +21,9 @@ export const useMyListingsQuery = (
     queryKey: queryListingsKeys.myListings(variables),
     queryFn: () => _client.request(MyListingsDocument, variables),
     ...options,
+  })
+
+export const useCreateItemMutation = () =>
+  useMutation({
+    mutationFn: (variables: CreateItemMutationVariables) => _client.request(CreateItemDocument, variables),
   })

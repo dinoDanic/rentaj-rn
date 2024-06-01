@@ -23,7 +23,7 @@ export const ContentLayout: FC<Props> = ({ variant = "default", ...props }) => {
           <H4>{props.title}</H4>
           {props.action && props.action}
         </View>
-        <View className={props.childrenClassName}>{props.children}</View>
+        <View className={cn("px-screen", props.childrenClassName)}>{props.children}</View>
       </View>
     )
   }

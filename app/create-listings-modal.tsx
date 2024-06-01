@@ -1,11 +1,15 @@
-import { View } from "react-native"
+import { ChooseImages } from "@/features/listings/components/create-listing/choose-images"
+import { CreateItemInput } from "@/gql/generated/graphql"
+import { FormProvider, useForm } from "react-hook-form"
 
-import { Text } from "@/components/ui/text"
+import { ContentLayout } from "@/components/ui/content-layout"
 
 export default function CreateListingsModal() {
+  const form = useForm<CreateItemInput>()
+
   return (
-    <View className="h-full w-full flex-1 bg-background">
-      <Text>modal</Text>
-    </View>
+    <FormProvider {...form}>
+      <ChooseImages />
+    </FormProvider>
   )
 }

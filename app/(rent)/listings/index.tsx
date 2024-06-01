@@ -1,4 +1,3 @@
-import SecureView from "@/features/auth/components/secure_view"
 import { ListingsHeader } from "@/features/listings/components/listings-header/listings-header"
 import { MyListingsQueryVariables } from "@/gql/generated/graphql"
 import { useMyListingsQuery } from "@/gql/hooks/items"
@@ -20,18 +19,16 @@ export default function Listings() {
   )
 
   const content = (
-    <FadeIn>
-      <ScrollView className="pt-sm">
-        <SecureView>
-          <BootyBayCardBuilder
-            data={data?.me?.items}
-            renderItem={({ item }) =>
-              item ? <BootyBayCard title={item.name} description={item.pricePerDay} key={item.id} /> : null
-            }
-          />
-        </SecureView>
-      </ScrollView>
-    </FadeIn>
+    <ScrollView className="pt-sm">
+      <FadeIn>
+        <BootyBayCardBuilder
+          data={data?.me?.items}
+          renderItem={({ item }) =>
+            item ? <BootyBayCard title={item.name} description={item.pricePerDay} key={item.id} /> : null
+          }
+        />
+      </FadeIn>
+    </ScrollView>
   )
 
   const renderContent = isLoading ? loading : content

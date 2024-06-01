@@ -7,3 +7,9 @@ query myListings($input: FilterItems) {
     }
   }
 }
+
+mutation createItem($input: CreateItemInput) {
+  createItem(input: $input) {
+    id
+  }
+}

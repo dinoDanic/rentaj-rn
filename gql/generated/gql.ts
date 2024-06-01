@@ -15,7 +15,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
 const documents = {
     "mutation createSession($input: CreateSessionInput!) {\n  createSession(input: $input) {\n    token\n    user {\n      id\n      email\n    }\n  }\n}": types.CreateSessionDocument,
     "query categories {\n  categories {\n    id\n    name\n  }\n}\n\nquery parentCategories {\n  parentCategories {\n    id\n    name\n    imageUrl\n  }\n}": types.CategoriesDocument,
-    "query myListings($input: FilterItems) {\n  me {\n    items(input: $input) {\n      id\n      name\n      pricePerDay\n    }\n  }\n}": types.MyListingsDocument,
+    "query myListings($input: FilterItems) {\n  me {\n    items(input: $input) {\n      id\n      name\n      pricePerDay\n    }\n  }\n}\n\nmutation createItem($input: CreateItemInput) {\n  createItem(input: $input) {\n    id\n  }\n}": types.MyListingsDocument,
     "query searchItems($after: String, $before: String, $first: Int, $last: Int, $input: SearchInput) {\n  searchItems(\n    after: $after\n    before: $before\n    first: $first\n    last: $last\n    input: $input\n  ) {\n    edges {\n      cursor\n      node {\n        name\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nquery searchPage($after: String, $before: String, $first: Int, $last: Int, $input: SearchInput) {\n  searchItems(\n    after: $after\n    before: $before\n    first: $first\n    last: $last\n    input: $input\n  ) {\n    edges {\n      cursor\n      node {\n        name\n        pricePerDay\n        delivery\n        location {\n          city\n        }\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  searchCategories(input: $input) {\n    id\n    name\n    itemsCount\n  }\n}\n\nquery searchCategories($input: SearchInput) {\n  searchCategories(input: $input) {\n    id\n    name\n  }\n}": types.SearchItemsDocument,
     "query me {\n  me {\n    account {\n      id\n      email\n    }\n  }\n}": types.MeDocument,
 };
@@ -45,7 +45,7 @@ export function graphql(source: "query categories {\n  categories {\n    id\n   
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query myListings($input: FilterItems) {\n  me {\n    items(input: $input) {\n      id\n      name\n      pricePerDay\n    }\n  }\n}"): (typeof documents)["query myListings($input: FilterItems) {\n  me {\n    items(input: $input) {\n      id\n      name\n      pricePerDay\n    }\n  }\n}"];
+export function graphql(source: "query myListings($input: FilterItems) {\n  me {\n    items(input: $input) {\n      id\n      name\n      pricePerDay\n    }\n  }\n}\n\nmutation createItem($input: CreateItemInput) {\n  createItem(input: $input) {\n    id\n  }\n}"): (typeof documents)["query myListings($input: FilterItems) {\n  me {\n    items(input: $input) {\n      id\n      name\n      pricePerDay\n    }\n  }\n}\n\nmutation createItem($input: CreateItemInput) {\n  createItem(input: $input) {\n    id\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

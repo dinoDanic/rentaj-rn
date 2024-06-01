@@ -21,8 +21,6 @@ module.exports = {
         "7xl": "5.75rem",
         "8xl": "6.75rem",
         "9xl": "9.25rem",
-      },
-      padding: {
         screen: "16",
       },
       fontFamily: {
