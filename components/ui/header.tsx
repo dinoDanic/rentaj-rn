@@ -18,7 +18,7 @@ type HeaderProps = {
 
 export const Header = (props: HeaderProps) => {
   return (
-    <View className={cn("flex-row items-center px-screen", props.className)}>
+    <View className={cn("flex-row items-center bg-background px-screen", props.className)}>
       <View className="flex-1">
         {props.hideBackButton !== true && (
           <Button

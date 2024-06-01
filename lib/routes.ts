@@ -1,5 +1,4 @@
 const index = "/"
-// const auth = "/";
 
 export const routes = {
   index: index,
@@ -8,6 +7,7 @@ export const routes = {
   rent: "(rent)",
   loginWithEmail: "login-with-email",
   createItem: "create-item",
+  createItemStepTwo: "create-item/step-two",
   filterListingsModal: "filter-listings-modal",
 } as const
 

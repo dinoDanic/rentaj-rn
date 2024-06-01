@@ -3,6 +3,7 @@ import {
   ChevronLeft,
   ImageIcon,
   ImageOffIcon,
+  ImagesIcon,
   KeyIcon,
   LucideIcon,
   MailIcon,
@@ -39,8 +40,10 @@ iconWithClassName(XCircleIcon)
 iconWithClassName(XIcon)
 iconWithClassName(PlusIcon)
 iconWithClassName(ChevronLeft)
+iconWithClassName(ImagesIcon)
 
 export {
+  ImagesIcon,
   ChevronLeft,
   XIcon,
   PlusIcon,
