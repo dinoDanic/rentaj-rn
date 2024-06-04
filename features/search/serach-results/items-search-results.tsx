@@ -12,7 +12,7 @@ type Props = {
 
 export default function ItemsSearchResults(props: Props) {
   return (
-    <ContentLayout title="Proizvodi" action={<SeeAll />}>
+    <ContentLayout childrenClassName="p-0" title="Proizvodi" action={<SeeAll />}>
       <TallCardBuilder
         data={props.query.data?.searchItems?.edges}
         renderItem={(e) => {

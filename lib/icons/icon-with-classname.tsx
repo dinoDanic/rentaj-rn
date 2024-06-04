@@ -16,6 +16,9 @@ import {
 } from "lucide-react-native"
 import { cssInterop } from "nativewind"
 
+import { iconSizes } from "../icon-sizes"
+import { cn } from "../utils"
+
 export function iconWithClassName(icon: LucideIcon) {
   cssInterop(icon, {
     className: {
@@ -57,3 +60,14 @@ export {
   KeyIcon,
   TelescopeIcon,
 }
+
+type IconProps = {
+  size?: number
+  className?: string
+}
+
+const defualtIconStyle = "text-muted-foreground"
+
+export const ICONS = ({ size = iconSizes.md, className }: IconProps) => ({
+  xIcon: <XIcon size={size} className={cn(defualtIconStyle, className)} />,
+})

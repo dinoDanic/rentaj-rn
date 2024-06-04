@@ -5,7 +5,7 @@ import { routes } from "@/lib/routes"
 
 import { RentajView } from "../types"
 
-type RentajState = {
+export type RentajState = {
   view: RentajView
   setView: (value: RentajView) => void
   toggleView: () => void

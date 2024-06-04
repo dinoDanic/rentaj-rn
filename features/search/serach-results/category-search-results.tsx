@@ -13,7 +13,7 @@ type Props = {
 
 export const CategorySearchResults = (props: Props) => {
   return (
-    <ContentLayout title="Kategorije" action={<SeeAll />}>
+    <ContentLayout childrenClassName="p-0" title="Kategorije" action={<SeeAll />}>
       <View className="gap-md px-screen">
         <BootyBayCardBuilder
           data={props.query.data?.searchCategories}

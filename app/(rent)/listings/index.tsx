@@ -1,7 +1,5 @@
-import { ListingsHeader } from "@/features/listings/components/listings-header/listings-header"
-import { MyListingsQueryVariables } from "@/gql/generated/graphql"
+import { useMyListings } from "@/features/listings/store/use-my-listings"
 import { useMyListingsQuery } from "@/gql/hooks/items"
-import { FormProvider, useForm } from "react-hook-form"
 import { ActivityIndicator, ScrollView, View } from "react-native"
 
 import { BootyBayCard } from "@/components/ui/cards/bootybay-card/bootybay-card"
@@ -9,8 +7,8 @@ import { BootyBayCardBuilder } from "@/components/ui/cards/bootybay-card/bootyba
 import { FadeIn } from "@/components/animations/fade-in"
 
 export default function Listings() {
-  const form = useForm<MyListingsQueryVariables>({ defaultValues: { input: { active: true } } })
-  const { data, isLoading } = useMyListingsQuery({ input: form.watch().input })
+  const { active } = useMyListings()
+  const { data, isLoading } = useMyListingsQuery({ input: { active } })
 
   const loading = (
     <FadeIn>
@@ -33,12 +31,5 @@ export default function Listings() {
 
   const renderContent = isLoading ? loading : content
 
-  return (
-    <View className="px-screen">
-      <FormProvider {...form}>
-        <ListingsHeader />
-        {renderContent}
-      </FormProvider>
-    </View>
-  )
+  return <View className="px-screen">{renderContent}</View>
 }

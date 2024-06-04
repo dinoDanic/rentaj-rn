@@ -1,9 +1,10 @@
 import { CreateItemForm, createItemFormShema } from "@/features/listings/types"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Stack } from "expo-router"
+import { router, Stack } from "expo-router"
 import { FormProvider, useForm } from "react-hook-form"
 
-import { Header } from "@/components/ui/header"
+import { ICONS } from "@/lib/icons/icon-with-classname"
+import { Button } from "@/components/ui/button"
 import { SafeAreaView } from "@/components/ui/safe-area-view"
 import { Small } from "@/components/ui/typography"
 
@@ -11,19 +12,21 @@ export default function CreateItemLayout() {
   const form = useForm<CreateItemForm>({ resolver: zodResolver(createItemFormShema) })
   return (
     <>
-      <SafeAreaView />
       <FormProvider {...form}>
         <Stack screenOptions={{ headerShown: true }}>
           <Stack.Screen
-            name={"index"}
+            name="index"
             options={{
-              header: () => <Header title="Novi oglas" actions={[<StepCounter step={1} />]} />,
+              headerTitle: "Novi oglas",
+              headerRight: () => <StepCounter step={1} />,
+              headerLeft: () => <Button onPress={router.back} size="icon" variant="secondary" icon={ICONS({}).xIcon} />,
             }}
           />
           <Stack.Screen
             name={"step-two"}
             options={{
-              header: () => <Header title="Informacije" actions={[<StepCounter step={2} />]} />,
+              headerTitle: "Informacije",
+              headerRight: () => <StepCounter step={2} />,
             }}
           />
         </Stack>

@@ -21,7 +21,7 @@ export default function CreateListingsIndexPage() {
   }
 
   return (
-    <View className="flex-1 justify-between px-screen">
+    <View className="flex-1 justify-between px-screen pt-xl">
       <View className="gap-md">
         <FormImages<CreateItemForm> name="images" label="Dodaj slike" />
         <FormInput<CreateItemForm> name="name" label="Naziv" placeholder="Naziv proizvoda" />

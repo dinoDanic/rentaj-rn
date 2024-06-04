@@ -1,5 +1,6 @@
 import React from "react"
-import { MyListingsQueryVariables } from "@/gql/generated/graphql"
+import { FilterItems } from "@/gql/generated/graphql"
+import { FormProvider, useForm } from "react-hook-form"
 
 import { iconSizes } from "@/lib/icon-sizes"
 import { SlidersVerticalIcon } from "@/lib/icons/icon-with-classname"
@@ -7,15 +8,24 @@ import { BaseCard } from "@/components/ui/cards/base-card"
 import { FormSwitch } from "@/components/ui/form/form-switch"
 import { Modal } from "@/components/ui/modal"
 
+import { useMyListings } from "../../store/use-my-listings"
+
 export const ListingsFilter = () => {
+  const form = useForm<FilterItems>({ defaultValues: { active: true } })
+  const { setActive } = useMyListings()
   return (
     <Modal icon={<SlidersVerticalIcon className="text-muted-foreground" size={iconSizes.md} />}>
       <BaseCard>
-        <FormSwitch<MyListingsQueryVariables>
-          label="Prikaži samo aktivne"
-          name="input.active"
-          className="w-full justify-between"
-        />
+        <FormProvider {...form}>
+          <FormSwitch<FilterItems>
+            label="Prikaži samo aktivne"
+            name="active"
+            className="w-full justify-between"
+            onCheckedChange={(state) => {
+              setActive(state)
+            }}
+          />
+        </FormProvider>
       </BaseCard>
     </Modal>
   )

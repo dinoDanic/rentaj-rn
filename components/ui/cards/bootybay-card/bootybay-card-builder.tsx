@@ -15,14 +15,4 @@ export const BootyBayCardBuilder = <D,>(props: InfoCardBuilderProps<D>) => {
       estimatedItemSize={100}
     />
   )
-  // return (
-  //   <MotiView from={{ opacity: 0 }} exit={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ type: "spring" }}>
-  //     <FlashList
-  //       ItemSeparatorComponent={() => <View className="h-4" />}
-  //       data={props.data}
-  //       renderItem={props.renderItem}
-  //       estimatedItemSize={100}
-  //     />
-  //   </MotiView>
-  // )
 }
