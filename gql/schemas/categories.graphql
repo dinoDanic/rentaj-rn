@@ -12,3 +12,30 @@ query parentCategories {
     imageUrl
   }
 }
+
+query selectParentCategories {
+  parentCategories {
+    id
+    name
+    imageUrl
+    childCategories {
+      id
+      name
+    }
+  }
+}
+
+query categoryById($input: CategoryByIdInput) {
+  categoryById(input: $input) {
+    id
+    name
+    childCategories {
+      id
+      name
+      childCategories {
+        id
+        name
+      }
+    }
+  }
+}

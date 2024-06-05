@@ -31,7 +31,7 @@ export default function ExploreLayout() {
           options={{
             title: "Oglasi",
             headerShown: true,
-            headerTitle: "Moji Oglasi",
+            headerTitle: "Moji oglasi",
             headerRight: () => <ListingsHeader />,
             tabBarIcon: ({ color }) => <BoxIcon color={color} />,
           }}

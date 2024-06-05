@@ -1,6 +1,7 @@
 import {
   ArrowLeftRightIcon,
   ChevronLeft,
+  ChevronRight,
   ImageIcon,
   ImageOffIcon,
   ImagesIcon,
@@ -44,6 +45,7 @@ iconWithClassName(XIcon)
 iconWithClassName(PlusIcon)
 iconWithClassName(ChevronLeft)
 iconWithClassName(ImagesIcon)
+iconWithClassName(ChevronRight)
 
 export {
   ImagesIcon,
@@ -70,4 +72,6 @@ const defualtIconStyle = "text-muted-foreground"
 
 export const ICONS = ({ size = iconSizes.md, className }: IconProps) => ({
   xIcon: <XIcon size={size} className={cn(defualtIconStyle, className)} />,
+  chevronLeft: <ChevronLeft size={size} className={cn(defualtIconStyle, className)} />,
+  chevronRight: <ChevronRight size={size} className={cn(defualtIconStyle, className)} />,
 })

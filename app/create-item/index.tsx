@@ -1,33 +1,38 @@
 import { CreateItemForm } from "@/features/listings/types"
-import { router } from "expo-router"
+import { Link } from "expo-router"
 import { useFormContext } from "react-hook-form"
-import { View } from "react-native"
+import { Alert, View } from "react-native"
 
 import { routes } from "@/lib/routes"
 import { Button } from "@/components/ui/button"
-import { FormImages } from "@/components/ui/form/form-images"
-import { FormInput } from "@/components/ui/form/form-input"
+import { Text } from "@/components/ui/text"
 
-export default function CreateListingsIndexPage() {
+export default function CreateItemChooseCategoryPage() {
   const form = useFormContext<CreateItemForm>()
-  const { trigger } = form
+
+  const category = form.watch("category")
 
   const check = async () => {
-    const isValid = await trigger(["name", "description", "images"])
+    const isValid = await form.trigger(["category"])
 
     if (isValid) {
-      router.push(routes.createItemStepTwo)
+      console.log("valid")
+    } else {
+      Alert.alert("Kategorija je obavezna")
     }
   }
-
   return (
-    <View className="flex-1 justify-between px-screen pt-xl">
-      <View className="gap-md">
-        <FormImages<CreateItemForm> name="images" label="Dodaj slike" />
-        <FormInput<CreateItemForm> name="name" label="Naziv" placeholder="Naziv proizvoda" />
-        <FormInput<CreateItemForm> name="description" label="Opis" placeholder="Opis proizvoda" />
+    <View className="flex-1 justify-between gap-lg p-screen">
+      <View>
+        <Text className="text-center">Pretrazi</Text>
+        <Text className="text-center">Oznacno: {category?.name ?? "Prazno"}</Text>
+        <Link href={`${routes.createItem}/0`}>
+          <Text className="text-center">List</Text>
+        </Link>
       </View>
-      <Button onPress={() => check()} title="Nastavi" />
+      <View>
+        <Button onPress={() => check()} title="Nastavi" />
+      </View>
     </View>
   )
 }

@@ -37,3 +37,5 @@ export default function CreateItemLayout() {
 }
 
 const StepCounter = (props: { step: number }) => <Small className="text-muted-foreground">Korak {props.step}/4</Small>
+
+// headerLeft: () => <ButtonIcon onPress={router.back} icon={ICONS({}).chevronLeft} />,
