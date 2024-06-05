@@ -17,7 +17,7 @@ export default function CreateItemLayout() {
           <Stack.Screen
             name="index"
             options={{
-              headerTitle: "Novi oglas",
+              headerTitle: "Kategorije",
               headerRight: () => <StepCounter step={1} />,
               headerLeft: () => <Button onPress={router.back} size="icon" variant="secondary" icon={ICONS({}).xIcon} />,
             }}

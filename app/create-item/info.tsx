@@ -1,9 +1,7 @@
 import { CreateItemForm } from "@/features/listings/types"
-import { router } from "expo-router"
 import { useFormContext } from "react-hook-form"
 import { View } from "react-native"
 
-import { routes } from "@/lib/routes"
 import { Button } from "@/components/ui/button"
 import { FormImages } from "@/components/ui/form/form-images"
 import { FormInput } from "@/components/ui/form/form-input"
@@ -16,7 +14,7 @@ export default function CreateListingsIndexPage() {
     const isValid = await trigger(["name", "description", "images"])
 
     if (isValid) {
-      router.push(`${routes.createItem}/0`)
+      //
     }
   }
 

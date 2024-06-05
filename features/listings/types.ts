@@ -7,7 +7,8 @@ export type CreateItemForm = {
   name: string
   description: string
   images: ImagePicker.ImagePickerAsset[]
-  category: Category
+  category?: Category
+  searchCategoryQuery: string
 }
 
 export const createItemFormShema = z.object<ZodType<CreateItemForm>>({
@@ -15,4 +16,5 @@ export const createItemFormShema = z.object<ZodType<CreateItemForm>>({
   description: z.string().optional(),
   images: z.array(imageZod),
   category: z.object<ZodType<Category>>({ id: z.string(), name: z.string() }),
+  searchCategoryQuery: z.string().optional(),
 })

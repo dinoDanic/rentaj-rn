@@ -7,7 +7,7 @@ export const routes = {
   rent: "(rent)",
   loginWithEmail: "login-with-email",
   createItem: "create-item",
-  createItemStepTwo: "create-item/step-two",
+  createItemInfo: "create-item/info",
   filterListingsModal: "filter-listings-modal",
 } as const
 
