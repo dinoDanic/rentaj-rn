@@ -14,8 +14,6 @@ export default function CreateItemLayout() {
     defaultValues: { pricePerDay: 0.0 },
   })
 
-  console.log(typeof form.watch("pricePerDay"))
-
   return (
     <>
       <FormProvider {...form}>
@@ -49,6 +47,18 @@ export default function CreateItemLayout() {
               headerRight: () => <StepCounter step={4} />,
             }}
           />
+          <Stack.Screen
+            name="preview"
+            options={{
+              title: "Pregled",
+            }}
+          />
+          <Stack.Screen
+            name="success"
+            options={{
+              headerShown: false,
+            }}
+          />
         </Stack>
       </FormProvider>
       <SafeAreaView />
@@ -57,5 +67,3 @@ export default function CreateItemLayout() {
 }
 
 const StepCounter = (props: { step: number }) => <Small className="text-muted-foreground">Korak {props.step}/4</Small>
-
-// headerLeft: () => <ButtonIcon onPress={router.back} icon={ICONS({}).chevronLeft} />,

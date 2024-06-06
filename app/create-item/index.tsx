@@ -31,7 +31,7 @@ export default function CreateItemChooseCategoryPage() {
 
   if (category) {
     return (
-      <View className="flex-1 justify-between p-screen">
+      <View className="flex-1 justify-between px-screen">
         <View className="flex-1 items-center justify-center">
           <Text>Odabrana kategorija</Text>
           <Text className="font-bold">{category.name}</Text>

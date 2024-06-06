@@ -6,12 +6,13 @@ import { View } from "react-native"
 import { routes } from "@/lib/routes"
 import { Button } from "@/components/ui/button"
 import { FormCurrencyInput } from "@/components/ui/form/form-input"
+import { Small } from "@/components/ui/typography"
 
 export default function PricePage() {
   const form = useFormContext<CreateItemForm>()
   const submit = async () => {
     const valid = await form.trigger(["pricePerDay"])
-    if (valid) router.push(routes.createItemReview)
+    if (valid) router.push(routes.createItemPreview)
   }
   return (
     <View className="flex-1 justify-between px-screen pt-lg">
@@ -21,7 +22,10 @@ export default function PricePage() {
           label="Cijena po danu"
           placeholder="Unesi cijenu po danu"
         />
-        <Button variant="link" title="Dodaj cijenu" />
+        <View>
+          <Button variant="link" title="Dodaj cijenu" />
+          <Small className="text-center text-muted-foreground">( Cijena po 3 dana, 7 dana,.. )</Small>
+        </View>
       </View>
       <View>
         <Button title="Nastavi" onPress={submit} />

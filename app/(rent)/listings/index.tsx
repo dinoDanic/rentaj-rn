@@ -1,14 +1,23 @@
+import React from "react"
 import { useMyListings } from "@/features/listings/store/use-my-listings"
 import { useMyListingsQuery } from "@/gql/hooks/items"
-import { ActivityIndicator, ScrollView, View } from "react-native"
+import { ActivityIndicator, RefreshControl, ScrollView, View } from "react-native"
 
 import { BootyBayCard } from "@/components/ui/cards/bootybay-card/bootybay-card"
 import { BootyBayCardBuilder } from "@/components/ui/cards/bootybay-card/bootybay-card-builder"
 import { FadeIn } from "@/components/animations/fade-in"
 
 export default function Listings() {
+  const [refreshing, setRefreshing] = React.useState(false)
   const { active } = useMyListings()
-  const { data, isLoading } = useMyListingsQuery({ input: { active } })
+  const { data, isLoading, refetch } = useMyListingsQuery({ input: { active } })
+
+  const onRefresh = React.useCallback(async () => {
+    setRefreshing(true)
+    await refetch()
+    setRefreshing(false)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const loading = (
     <FadeIn>
@@ -17,7 +26,7 @@ export default function Listings() {
   )
 
   const content = (
-    <ScrollView className="pt-sm">
+    <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />} className="pt-sm">
       <FadeIn>
         <BootyBayCardBuilder
           data={data?.me?.items}

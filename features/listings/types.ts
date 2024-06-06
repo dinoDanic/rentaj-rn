@@ -7,7 +7,7 @@ export type CreateItemForm = {
   name: string
   description: string
   images: ImagePicker.ImagePickerAsset[]
-  category?: Category
+  category: Category
   searchCategoryQuery: string
   screenName: string
   pricePerDay: number
