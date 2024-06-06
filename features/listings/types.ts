@@ -10,6 +10,7 @@ export type CreateItemForm = {
   category?: Category
   searchCategoryQuery: string
   screenName: string
+  pricePerDay: number
 }
 
 export const createItemFormShema = z.object<ZodType<CreateItemForm>>({
@@ -19,4 +20,5 @@ export const createItemFormShema = z.object<ZodType<CreateItemForm>>({
   category: z.object<ZodType<Category>>({ id: z.string(), name: z.string() }),
   searchCategoryQuery: z.string().optional(),
   screenName: z.string().optional(),
+  pricePerDay: z.number(),
 })

@@ -9,7 +9,12 @@ import { SafeAreaView } from "@/components/ui/safe-area-view"
 import { Small } from "@/components/ui/typography"
 
 export default function CreateItemLayout() {
-  const form = useForm<CreateItemForm>({ resolver: zodResolver(createItemFormShema) })
+  const form = useForm<CreateItemForm>({
+    resolver: zodResolver(createItemFormShema),
+    defaultValues: { pricePerDay: 0.0 },
+  })
+
+  console.log(typeof form.watch("pricePerDay"))
 
   return (
     <>
@@ -24,14 +29,26 @@ export default function CreateItemLayout() {
             }}
           />
           <Stack.Screen
+            name="[category-id]"
+            options={{
+              title: "",
+              headerRight: () => <StepCounter step={1} />,
+            }}
+          />
+          <Stack.Screen
             name="info"
             options={{
               headerTitle: "Informacije",
               headerRight: () => <StepCounter step={2} />,
             }}
           />
-          <Stack.Screen name="[category-id]" options={{ title: "" }} />
-          <Stack.Screen name="price" options={{ title: "Cijena" }} />
+          <Stack.Screen
+            name="price"
+            options={{
+              title: "Cijena",
+              headerRight: () => <StepCounter step={4} />,
+            }}
+          />
         </Stack>
       </FormProvider>
       <SafeAreaView />
