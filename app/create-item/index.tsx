@@ -1,11 +1,10 @@
 import { CreateItemForm } from "@/features/listings/types"
-import { Link, router } from "expo-router"
+import { router } from "expo-router"
 import { useFormContext } from "react-hook-form"
 import { Alert, View } from "react-native"
 
 import { routes } from "@/lib/routes"
 import { Button } from "@/components/ui/button"
-import { FormInput } from "@/components/ui/form/form-input"
 import { Text } from "@/components/ui/text"
 
 export default function CreateItemChooseCategoryPage() {
@@ -25,6 +24,11 @@ export default function CreateItemChooseCategoryPage() {
 
   const openList = () => router.push(`${routes.createItem}/0`)
 
+  const changeCategory = () => {
+    form.setValue("category", undefined)
+    openList()
+  }
+
   if (category) {
     return (
       <View className="flex-1 justify-between p-screen">
@@ -33,11 +37,7 @@ export default function CreateItemChooseCategoryPage() {
           <Text className="font-bold">{category.name}</Text>
         </View>
         <View className="gap-sm">
-          <Button
-            variant="link"
-            onPress={() => form.setValue("category", undefined)}
-            title="Odaberi drugu kategoriju"
-          />
+          <Button variant="link" onPress={changeCategory} title="Odaberi drugu kategoriju" />
           <Button onPress={() => check()} title="Nastavi" />
         </View>
       </View>
@@ -46,9 +46,10 @@ export default function CreateItemChooseCategoryPage() {
 
   return (
     <View className="flex-1 justify-between gap-lg p-screen">
-      <View className="gap-sm">
-        <FormInput<CreateItemForm> name="searchCategoryQuery" label="Pretraži kategorije" placeholder="Pretraži" />
-        <Button onPress={openList} variant="secondary" title="Učitaj iz liste" />
+      <View className="items-centeru flex-1 justify-center gap-sm">
+        {/* <FormInput<CreateItemForm> name="searchCategoryQuery" label="Pretraži kategorije" placeholder="Pretraži" /> */}
+        {/* <SearchCategories /> */}
+        <Button onPress={openList} variant="secondary" title="Odaberi kategoriju iz liste" />
       </View>
       <View>
         <Button onPress={() => check()} title="Nastavi" />

@@ -8,6 +8,7 @@ export const routes = {
   loginWithEmail: "login-with-email",
   createItem: "create-item",
   createItemInfo: "create-item/info",
+  createItemPrice: "create-item/price",
   filterListingsModal: "filter-listings-modal",
 } as const
 

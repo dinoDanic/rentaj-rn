@@ -1,9 +1,18 @@
 import { PropsWithChildren } from "react"
 import { MotiView } from "moti"
 
-export const FadeIn = (props: PropsWithChildren) => {
+type Props = PropsWithChildren & {
+  className?: string
+}
+
+export const FadeIn = (props: Props) => {
   return (
-    <MotiView from={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ type: "spring" }}>
+    <MotiView
+      className={props.className}
+      from={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ type: "spring" }}
+    >
       {props.children}
     </MotiView>
   )

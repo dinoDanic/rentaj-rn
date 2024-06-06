@@ -10,6 +10,7 @@ import { Small } from "@/components/ui/typography"
 
 export default function CreateItemLayout() {
   const form = useForm<CreateItemForm>({ resolver: zodResolver(createItemFormShema) })
+
   return (
     <>
       <FormProvider {...form}>
@@ -17,18 +18,20 @@ export default function CreateItemLayout() {
           <Stack.Screen
             name="index"
             options={{
-              headerTitle: "Kategorije",
+              headerTitle: "Novi oglas",
               headerRight: () => <StepCounter step={1} />,
               headerLeft: () => <Button onPress={router.back} size="icon" variant="secondary" icon={ICONS({}).xIcon} />,
             }}
           />
           <Stack.Screen
-            name={"step-two"}
+            name="info"
             options={{
               headerTitle: "Informacije",
               headerRight: () => <StepCounter step={2} />,
             }}
           />
+          <Stack.Screen name="[category-id]" options={{ title: "" }} />
+          <Stack.Screen name="price" options={{ title: "Cijena" }} />
         </Stack>
       </FormProvider>
       <SafeAreaView />
