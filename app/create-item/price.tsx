@@ -6,6 +6,7 @@ import { View } from "react-native"
 import { routes } from "@/lib/routes"
 import { Button } from "@/components/ui/button"
 import { FormCurrencyInput } from "@/components/ui/form/form-input"
+import { KeyboardAvoidingView } from "@/components/ui/keyboard-avoiding-view"
 import { Small } from "@/components/ui/typography"
 
 export default function PricePage() {
@@ -27,9 +28,9 @@ export default function PricePage() {
           <Small className="text-center text-muted-foreground">( Cijena po 3 dana, 7 dana,.. )</Small>
         </View>
       </View>
-      <View>
+      <KeyboardAvoidingView>
         <Button title="Nastavi" onPress={submit} />
-      </View>
+      </KeyboardAvoidingView>
     </View>
   )
 }

@@ -17,7 +17,7 @@ export const BootyBayCard = (props: BootyBayCardProps) => {
 
   return (
     <View>
-      <View className="flex-row gap-md">
+      <View className="flex-row gap-md px-screen">
         <Image
           style={styles.image}
           source={props.source}

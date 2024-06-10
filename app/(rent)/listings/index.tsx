@@ -26,7 +26,7 @@ export default function Listings() {
   )
 
   const content = (
-    <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />} className="pt-sm">
+    <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />} className="pt-lg">
       <FadeIn>
         <BootyBayCardBuilder
           data={data?.me?.items}
@@ -40,5 +40,5 @@ export default function Listings() {
 
   const renderContent = isLoading ? loading : content
 
-  return <View className="px-screen">{renderContent}</View>
+  return <View className="">{renderContent}</View>
 }
