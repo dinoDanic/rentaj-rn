@@ -1,7 +1,7 @@
 import { CreateItemForm } from "@/features/listings/types"
 import { router } from "expo-router"
 import { useFormContext } from "react-hook-form"
-import { ScrollView, View } from "react-native"
+import { KeyboardAvoidingView, Platform, ScrollView, View } from "react-native"
 
 import { routes } from "@/lib/routes"
 import { Button } from "@/components/ui/button"
@@ -20,6 +20,8 @@ export default function CreateListingsIndexPage() {
     }
   }
 
+  const keyboardVerticalOffset = Platform.OS === "ios" ? 120 : 0
+
   return (
     <View className="flex-1 justify-between px-screen">
       <ScrollView className="pt-lg">
@@ -35,7 +37,9 @@ export default function CreateListingsIndexPage() {
           />
         </View>
       </ScrollView>
-      <Button onPress={() => check()} title="Nastavi" />
+      <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={keyboardVerticalOffset}>
+        <Button onPress={() => check()} title="Nastavi" />
+      </KeyboardAvoidingView>
     </View>
   )
 }

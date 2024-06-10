@@ -70,7 +70,7 @@ const RenderCategoryItem = (category: Category) => {
           router.push(href)
         } else {
           form.setValue("category", category)
-          router.navigate(routes.createItem)
+          router.navigate(routes.createItemInfo)
         }
       }}
       name={category.name}
