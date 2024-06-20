@@ -1,4 +1,3 @@
-import { ListingsHeader } from "@/features/listings/components/listings-header/listings-header"
 import { Tabs } from "expo-router"
 import { BoxIcon, CalendarFoldIcon, CircleCheckIcon, MessageCircleIcon, UserIcon } from "lucide-react-native"
 
@@ -27,12 +26,9 @@ export default function ExploreLayout() {
           }}
         />
         <Tabs.Screen
-          name="listings/index"
+          name="listings"
           options={{
-            title: "Oglasi",
-            headerShown: true,
-            headerTitle: "Moji oglasi",
-            headerRight: () => <ListingsHeader />,
+            headerShown: false,
             tabBarIcon: ({ color }) => <BoxIcon color={color} />,
           }}
         />

@@ -18,7 +18,16 @@ export default function RootLayout() {
         <Stack.Screen name={routes.explore} options={{ animation: "fade" }} />
         <Stack.Screen name={routes.rent} options={{ animation: "fade", title: "Iznajmljivanje" }} />
         <Stack.Screen name={routes.loginModal} options={{ presentation: "modal", animation: "default" }} />
-        <Stack.Screen name={routes.loginWithEmail} />
+        <Stack.Screen
+          name={routes.loginWithEmail}
+          options={{
+            headerShown: true,
+            headerLargeTitle: true,
+            title: "Prijava",
+            headerBackVisible: false,
+            headerLargeTitleShadowVisible: false,
+          }}
+        />
         <Stack.Screen
           name={routes.filterListingsModal}
           options={{ presentation: "formSheet", headerTransparent: true }}

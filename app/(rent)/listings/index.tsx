@@ -1,7 +1,7 @@
 import React from "react"
 import { useMyListings } from "@/features/listings/store/use-my-listings"
 import { useMyListingsQuery } from "@/gql/hooks/items"
-import { ActivityIndicator, RefreshControl, ScrollView, View } from "react-native"
+import { ActivityIndicator, RefreshControl, ScrollView } from "react-native"
 
 import { BootyBayCard } from "@/components/ui/cards/bootybay-card/bootybay-card"
 import { BootyBayCardBuilder } from "@/components/ui/cards/bootybay-card/bootybay-card-builder"
@@ -26,19 +26,27 @@ export default function Listings() {
   )
 
   const content = (
-    <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />} className="pt-lg">
-      <FadeIn>
-        <BootyBayCardBuilder
-          data={data?.me?.items}
-          renderItem={({ item }) =>
-            item ? <BootyBayCard title={item.name} description={item.pricePerDay} key={item.id} /> : null
-          }
-        />
-      </FadeIn>
-    </ScrollView>
+    <FadeIn>
+      <BootyBayCardBuilder
+        data={data?.me?.items}
+        renderItem={({ item }) =>
+          item ? <BootyBayCard title={item.name} description={item.pricePerDay} key={item.id} /> : null
+        }
+      />
+    </FadeIn>
   )
 
   const renderContent = isLoading ? loading : content
 
-  return <View className="">{renderContent}</View>
+  return (
+    <>
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+        className="pt-lg"
+      >
+        {renderContent}
+      </ScrollView>
+    </>
+  )
 }

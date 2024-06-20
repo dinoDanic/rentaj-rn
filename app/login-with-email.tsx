@@ -7,13 +7,12 @@ import AsyncStorage from "@react-native-async-storage/async-storage"
 import { useMutation } from "@tanstack/react-query"
 import { router } from "expo-router"
 import { FormProvider, useForm } from "react-hook-form"
-import { View } from "react-native"
+import { ScrollView, View } from "react-native"
 import { z } from "zod"
 
 import { asyncStorage } from "@/lib/async-storage"
 import { Button } from "@/components/ui/button"
 import { FormInput } from "@/components/ui/form/form-input"
-import { H1 } from "@/components/ui/typography"
 
 const formSchema = z.object<ZodType<CreateSessionInput>>({
   email: z.string().email(),
@@ -52,24 +51,25 @@ export default function LoginWithEmail() {
   }
 
   return (
-    <View className="gap-lg bg-background p-screen py-3xl">
-      <H1 className="text-center">Login</H1>
-      <FormProvider {...form}>
-        <FormInput<CreateSessionInput> name="email" placeholder="Email" keyboardType="email-address" />
-        <FormInput<CreateSessionInput>
-          name="password"
-          placeholder="Lozinka"
-          keyboardType="visible-password"
-          secureTextEntry={true}
+    <ScrollView contentInsetAdjustmentBehavior="automatic">
+      <View className="gap-md p-screen">
+        <FormProvider {...form}>
+          <FormInput<CreateSessionInput> name="email" placeholder="Email" keyboardType="email-address" />
+          <FormInput<CreateSessionInput>
+            name="password"
+            placeholder="Lozinka"
+            keyboardType="visible-password"
+            secureTextEntry={true}
+          />
+        </FormProvider>
+        <Button loading={createSession.isPending} title="Login" onPress={form.handleSubmit(submit)} />
+        <Button
+          variant="light"
+          loading={createSession.isPending}
+          title="Test user"
+          onPress={() => submit({ email: "user@user.com", password: "password" })}
         />
-      </FormProvider>
-      <Button loading={createSession.isPending} title="Login" onPress={form.handleSubmit(submit)} />
-      <Button
-        variant="light"
-        loading={createSession.isPending}
-        title="Test user"
-        onPress={() => submit({ email: "user@user.com", password: "password" })}
-      />
-    </View>
+      </View>
+    </ScrollView>
   )
 }
