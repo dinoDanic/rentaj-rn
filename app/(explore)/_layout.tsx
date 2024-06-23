@@ -7,7 +7,6 @@ import { SafeAreaView } from "@/components/ui/safe-area-view"
 export default function AppLayout() {
   return (
     <>
-      <SafeAreaView />
       <Tabs
         screenOptions={{
           headerShown: false,
@@ -25,8 +24,8 @@ export default function AppLayout() {
           name="search"
           options={{
             title: "Pretraži",
-            headerShown: true,
-            header: () => <RenderSearchHeader />,
+            // headerShown: true,
+            // header: () => <RenderSearchHeader />,
             tabBarIcon: ({ color }) => <SearchIcon color={color} />,
           }}
         />

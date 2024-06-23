@@ -2,16 +2,18 @@ import { useEffect, useState } from "react"
 import { useSearchPage } from "@/gql/hooks/search"
 import { useDebounce } from "@/helpers/use-debounce"
 import { MotiView } from "moti"
+import { useFormContext } from "react-hook-form"
 import { ActivityIndicator, View } from "react-native"
 
 import { Text } from "@/components/ui/text"
+import { SearchPageForm } from "@/app/(explore)/search/_layout"
 
-import { useSearch } from "../hooks/use-search"
 import { CategorySearchResults } from "./category-search-results"
 import ItemsSearchResults from "./items-search-results"
 
 export const RenderSearchResults = () => {
-  const { query } = useSearch()
+  const form = useFormContext<SearchPageForm>()
+  const query = form.watch("query")
   const [isTyping, setIsTyping] = useState(false)
 
   const searchQuery = useSearchPage({ input: { query }, first: 10 }, { enabled: false })

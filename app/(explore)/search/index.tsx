@@ -3,7 +3,7 @@ import { ScrollView } from "react-native"
 
 export default function Search() {
   return (
-    <ScrollView>
+    <ScrollView contentInsetAdjustmentBehavior="automatic">
       <RenderSearchResults />
     </ScrollView>
   )

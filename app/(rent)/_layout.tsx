@@ -21,7 +21,6 @@ export default function ExploreLayout() {
         <Tabs.Screen
           name="calendar"
           options={{
-            title: "Kalendar",
             tabBarIcon: ({ color }) => <CalendarFoldIcon color={color} />,
           }}
         />
@@ -35,14 +34,12 @@ export default function ExploreLayout() {
         <Tabs.Screen
           name="messages"
           options={{
-            title: "Poruke",
             tabBarIcon: ({ color }) => <MessageCircleIcon color={color} />,
           }}
         />
         <Tabs.Screen
           name="profile"
           options={{
-            title: "Profil",
             tabBarIcon: ({ color }) => <UserIcon color={color} />,
           }}
         />
