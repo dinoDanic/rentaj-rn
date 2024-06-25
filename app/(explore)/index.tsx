@@ -5,6 +5,7 @@ import { queryCategorieKeys } from "@/gql/hooks/categories"
 import { RefreshControl, ScrollView, View } from "react-native"
 
 import { queryClient } from "@/lib/react-query/query-client"
+import { SafeAreaView } from "@/components/ui/safe-area-view"
 
 export default function Index() {
   const [refreshing, setRefreshing] = React.useState(false)
@@ -16,11 +17,14 @@ export default function Index() {
   }, [])
 
   return (
-    <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
-      <View className="gap-2xl">
-        <RenderHeroFeature />
-        <RenderInfoCategories />
-      </View>
-    </ScrollView>
+    <>
+      <SafeAreaView />
+      <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
+        <View className="gap-2xl">
+          <RenderHeroFeature />
+          <RenderInfoCategories />
+        </View>
+      </ScrollView>
+    </>
   )
 }

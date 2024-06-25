@@ -19,11 +19,11 @@ export const ContentLayout: FC<Props> = ({ variant = "default", ...props }) => {
   if (variant === "default") {
     return (
       <View className={cn("gap-md", props.className)}>
-        <View className="flex-row justify-between px-screen">
+        <View className="flex-row justify-between">
           <H4>{props.title}</H4>
           {props.action && props.action}
         </View>
-        <View className={cn("px-screen", props.childrenClassName)}>{props.children}</View>
+        <View className={cn("", props.childrenClassName)}>{props.children}</View>
       </View>
     )
   }
@@ -31,7 +31,7 @@ export const ContentLayout: FC<Props> = ({ variant = "default", ...props }) => {
   if (variant === "leading") {
     return (
       <View className={cn("gap-0", props.className)}>
-        <View className="flex-row justify-between px-screen">
+        <View className="flex-row justify-between">
           <H2 className="top-0">{props.title}</H2>
           {props.action && props.action}
         </View>

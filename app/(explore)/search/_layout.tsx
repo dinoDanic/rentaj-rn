@@ -15,6 +15,7 @@ export default function SearchLayout() {
           options={{
             headerSearchBarOptions: {
               placeholder: "Pretraži oglase",
+              hideWhenScrolling: false,
               onChangeText: (text) => {
                 form.setValue("query", text.nativeEvent.text)
               },

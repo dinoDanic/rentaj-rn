@@ -1,9 +1,9 @@
 import { router } from "expo-router"
 import { View } from "react-native"
 
-import { iconSizes } from "@/lib/icon-sizes"
 import { PlusIcon } from "@/lib/icons/icon-with-classname"
 import { routes } from "@/lib/routes"
+import { iconSizes } from "@/lib/sizes"
 import { Button } from "@/components/ui/button"
 
 import { ListingsFilter } from "./listings-filter"

@@ -17,8 +17,8 @@ import {
 } from "lucide-react-native"
 import { cssInterop } from "nativewind"
 
-import { iconSizes } from "../icon-sizes"
 import { cn } from "../utils"
+import { iconSizes } from "../sizes"
 
 export function iconWithClassName(icon: LucideIcon) {
   cssInterop(icon, {

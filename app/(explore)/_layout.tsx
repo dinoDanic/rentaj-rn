@@ -1,8 +1,5 @@
-import { RenderSearchHeader } from "@/features/search/search-header/render-search-header"
 import { Tabs } from "expo-router"
 import { HeartIcon, HomeIcon, MessageCircleIcon, SearchIcon, UserIcon } from "lucide-react-native"
-
-import { SafeAreaView } from "@/components/ui/safe-area-view"
 
 export default function AppLayout() {
   return (
@@ -10,7 +7,6 @@ export default function AppLayout() {
       <Tabs
         screenOptions={{
           headerShown: false,
-          // tabBarShowLabel: false,
         }}
       >
         <Tabs.Screen
@@ -24,8 +20,6 @@ export default function AppLayout() {
           name="search"
           options={{
             title: "Pretraži",
-            // headerShown: true,
-            // header: () => <RenderSearchHeader />,
             tabBarIcon: ({ color }) => <SearchIcon color={color} />,
           }}
         />

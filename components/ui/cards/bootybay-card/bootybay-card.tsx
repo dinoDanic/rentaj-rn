@@ -1,5 +1,5 @@
 import { Image } from "expo-image"
-import { StyleSheet, View } from "react-native"
+import { Pressable, StyleSheet, View } from "react-native"
 
 import { Divider } from "../../divider"
 import { Text } from "../../text"
@@ -9,6 +9,7 @@ type BootyBayCardProps = {
   source?: string
   title: string
   description?: string
+  onPress?: () => void
 }
 
 export const BootyBayCard = (props: BootyBayCardProps) => {
@@ -16,7 +17,7 @@ export const BootyBayCard = (props: BootyBayCardProps) => {
     "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj["
 
   return (
-    <View>
+    <Pressable onPress={props.onPress}>
       <View className="flex-row gap-md px-screen">
         <Image
           style={styles.image}
@@ -31,7 +32,7 @@ export const BootyBayCard = (props: BootyBayCardProps) => {
         </View>
       </View>
       <Divider className="mt-md" />
-    </View>
+    </Pressable>
   )
 }
 

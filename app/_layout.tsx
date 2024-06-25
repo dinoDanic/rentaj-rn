@@ -14,7 +14,7 @@ SplashScreen.preventAutoHideAsync()
 export default function RootLayout() {
   return (
     <Providers>
-      <Stack screenOptions={{ headerShown: false }}>
+      <Stack screenOptions={{ headerShown: false }} >
         <Stack.Screen name={routes.explore} options={{ animation: "fade" }} />
         <Stack.Screen name={routes.rent} options={{ animation: "fade", title: "Iznajmljivanje" }} />
         <Stack.Screen name={routes.loginModal} options={{ presentation: "modal", animation: "default" }} />

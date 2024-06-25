@@ -2,13 +2,13 @@ import React from "react"
 import { FilterItems } from "@/gql/generated/graphql"
 import { FormProvider, useForm } from "react-hook-form"
 
-import { iconSizes } from "@/lib/icon-sizes"
 import { SlidersVerticalIcon } from "@/lib/icons/icon-with-classname"
 import { BaseCard } from "@/components/ui/cards/base-card"
 import { FormSwitch } from "@/components/ui/form/form-switch"
 import { Modal } from "@/components/ui/modal"
 
 import { useMyListings } from "../../store/use-my-listings"
+import { iconSizes } from "@/lib/sizes"
 
 export const ListingsFilter = () => {
   const form = useForm<FilterItems>({ defaultValues: { active: true } })

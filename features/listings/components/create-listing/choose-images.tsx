@@ -3,10 +3,10 @@ import { Image } from "expo-image"
 import * as ImagePicker from "expo-image-picker"
 import { ScrollView, StyleSheet, View } from "react-native"
 
-import { iconSizes } from "@/lib/icon-sizes"
 import { PlusIcon, XIcon } from "@/lib/icons/icon-with-classname"
 import { Button } from "@/components/ui/button"
 import { ContentLayout } from "@/components/ui/content-layout"
+import { iconSizes } from "@/lib/sizes"
 
 export const ChooseImages = () => {
   const [images, setImages] = useState<ImagePicker.ImagePickerAsset[]>([])

@@ -1,12 +1,11 @@
 import React from "react"
-import { ListingsHeader } from "@/features/listings/components/listings-header/listings-header"
 import { Stack } from "expo-router"
 
 export default function TodayLayout() {
   return (
     <Stack>
       <Stack.Screen
-        name="index"
+        name="today"
         options={{
           title: "Danas",
           headerLargeTitle: true,

@@ -3,8 +3,8 @@ import * as ImagePicker from "expo-image-picker"
 import { Controller, Path, useFormContext } from "react-hook-form"
 import { Pressable, ScrollView, StyleSheet, View } from "react-native"
 
-import { iconSizes } from "@/lib/icon-sizes"
 import { ImagesIcon, PlusIcon, XIcon } from "@/lib/icons/icon-with-classname"
+import { iconSizes } from "@/lib/sizes"
 import { FadeIn } from "@/components/animations/fade-in"
 
 import { Button } from "../button"

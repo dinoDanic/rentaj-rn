@@ -1,8 +1,10 @@
 import React from "react"
 import { useMyListings } from "@/features/listings/store/use-my-listings"
 import { useMyListingsQuery } from "@/gql/hooks/items"
+import { router } from "expo-router"
 import { ActivityIndicator, RefreshControl, ScrollView } from "react-native"
 
+import { routes } from "@/lib/routes"
 import { BootyBayCard } from "@/components/ui/cards/bootybay-card/bootybay-card"
 import { BootyBayCardBuilder } from "@/components/ui/cards/bootybay-card/bootybay-card-builder"
 import { FadeIn } from "@/components/animations/fade-in"
@@ -30,7 +32,14 @@ export default function Listings() {
       <BootyBayCardBuilder
         data={data?.me?.items}
         renderItem={({ item }) =>
-          item ? <BootyBayCard title={item.name} description={item.pricePerDay} key={item.id} /> : null
+          item ? (
+            <BootyBayCard
+              onPress={() => router.push(`${routes.item.index}/${item.id}/${item.name}`)}
+              title={item.name}
+              description={item.pricePerDay}
+              key={item.id}
+            />
+          ) : null
         }
       />
     </FadeIn>

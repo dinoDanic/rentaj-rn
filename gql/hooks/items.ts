@@ -4,6 +4,9 @@ import { useMutation, useQuery, UseQueryOptions, UseQueryResult } from "@tanstac
 import {
   CreateItemDocument,
   CreateItemMutationVariables,
+  ItemByIdDocument,
+  ItemByIdQuery,
+  ItemByIdQueryVariables,
   MyListingsDocument,
   MyListingsQuery,
   MyListingsQueryVariables,
@@ -11,6 +14,7 @@ import {
 
 export const queryListingsKeys = {
   myListings: (args: MyListingsQueryVariables) => ["my-listings", args],
+  itemById: (args: ItemByIdQueryVariables) => ["item-by-id", args],
 }
 
 export const useMyListingsQuery = (
@@ -26,4 +30,14 @@ export const useMyListingsQuery = (
 export const useCreateItemMutation = () =>
   useMutation({
     mutationFn: (variables: CreateItemMutationVariables) => _client.request(CreateItemDocument, variables),
+  })
+
+export const useItemByIdQuery = (
+  variables: ItemByIdQueryVariables,
+  options?: Partial<UseQueryOptions<ItemByIdQuery, Error>>
+): UseQueryResult<ItemByIdQuery, Error> =>
+  useQuery<ItemByIdQuery, Error>({
+    queryKey: queryListingsKeys.itemById(variables),
+    queryFn: () => _client.request(ItemByIdDocument, variables),
+    ...options,
   })

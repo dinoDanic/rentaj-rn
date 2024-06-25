@@ -13,7 +13,7 @@ const windowWidth = Dimensions.get("window").width
 export default function HeroCard(props: HeroCardType) {
   return (
     // eslint-disable-next-line prettier/prettier
-    <View style={{ width: windowWidth }} className="h-[220] p-screen">
+    <View style={{ width: windowWidth }} className="h-[200] p-screen">
       <View className="flex-1 items-center justify-center rounded-xl bg-border">
         <Large className="text-muted-foreground">{props.title}</Large>
       </View>

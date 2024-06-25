@@ -2,12 +2,12 @@ import { ReactNode } from "react"
 import { router } from "expo-router"
 import { View } from "react-native"
 
-import { iconSizes } from "@/lib/icon-sizes"
 import { ChevronLeft } from "@/lib/icons/icon-with-classname"
 import { cn } from "@/lib/utils"
 
 import { Button } from "./button"
 import { H4 } from "./typography"
+import { iconSizes } from "@/lib/sizes"
 
 type HeaderProps = {
   actions?: ReactNode[]

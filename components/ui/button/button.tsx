@@ -110,42 +110,5 @@ const Button = React.forwardRef<React.ElementRef<typeof Pressable>, ButtonProps>
 
 Button.displayName = "Button"
 
-// const Button = React.forwardRef<React.ElementRef<typeof Pressable>, ButtonProps>(
-//   ({ className, variant, size, ...props }, ref) => {
-//     const children = props.loading ? <ActivityIndicator /> : props.children
-//     return (
-//       <TextClassContext.Provider
-//         value={cn(props.disabled && "web:pointer-events-none", buttonTextVariants({ variant, size }))}
-//       >
-//         <Pressable
-//           className={cn(
-//             props.disabled && "opacity-50 web:pointer-events-none",
-//             buttonVariants({ variant, size, className })
-//           )}
-//           ref={ref}
-//           role="button"
-//           {...props}
-//         >
-//           {children}
-//         </Pressable>
-//       </TextClassContext.Provider>
-//     )
-//   }
-// )
-//
-// Button.displayName = "Button"
-//
-// const ButtonWithIcon = React.forwardRef<React.ElementRef<typeof Pressable>, ButtonProps>(
-//   ({ children, ...props }, ref) => {
-//     return (
-//       <Button {...props} ref={ref}>
-//         <View className="flex-row items-center gap-sm">
-//           <>{children}</>
-//         </View>
-//       </Button>
-//     )
-//   }
-// )
-
 export { Button, buttonTextVariants, buttonVariants }
 export type { ButtonProps }

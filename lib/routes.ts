@@ -13,6 +13,9 @@ export const routes = {
   createItemPreview: "create-item/preview",
   createItemSuccess: "create-item/success",
   filterListingsModal: "filter-listings-modal",
+  item: {
+    index: "item",
+  },
 } as const
 
 export type RouteKeys = keyof typeof routes

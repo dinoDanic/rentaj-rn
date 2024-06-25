@@ -8,6 +8,32 @@ query myListings($input: FilterItems) {
   }
 }
 
+query itemById($input: ItemByIdInput) {
+  itemById(input: $input) {
+    insertedAt
+    user {
+      id
+      email
+      company {
+        id
+        name
+      }
+    }
+    capara
+    delivery
+    description
+    id
+    location {
+      address
+      city
+      id
+    }
+    name
+    pickUp
+    pricePerDay
+  }
+}
+
 mutation createItem($input: CreateItemInput) {
   createItem(input: $input) {
     id

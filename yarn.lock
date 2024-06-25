@@ -2792,6 +2792,25 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
+"@radix-ui/react-compose-refs@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-compose-refs/-/react-compose-refs-1.1.0.tgz#656432461fc8283d7b591dcf0d79152fae9ecc74"
+  integrity sha512-b4inOtiaOnYf9KWyO3jAeeCG6FeyfY6ldiEPanbUjWd+xIk5wZeHa8yVwmrJ2vderhu/BQvzCrJI0lHd+wIiqw==
+
+"@radix-ui/react-primitive@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-primitive/-/react-primitive-2.0.0.tgz#fe05715faa9203a223ccc0be15dc44b9f9822884"
+  integrity sha512-ZSpFm0/uHa8zTvKBDjLFWLo8dkr4MBsiDLz0g3gMUwqgLHz9rTaRRGYDgvZPtBJgYCBKXkS9fzmoySgr8CO6Cw==
+  dependencies:
+    "@radix-ui/react-slot" "1.1.0"
+
+"@radix-ui/react-separator@^1.0.3":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-separator/-/react-separator-1.1.0.tgz#ee0f4d86003b0e3ea7bc6ccab01ea0adee32663e"
+  integrity sha512-3uBAs+egzvJBDZAzvb/n4NxxOYpnspmWxO2u5NbZ8Y6FM/NdrGSF9bop3Cf6F6C71z1rTSn8KV0Fo2ZVd79lGA==
+  dependencies:
+    "@radix-ui/react-primitive" "2.0.0"
+
 "@radix-ui/react-slot@1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-slot/-/react-slot-1.0.1.tgz#e7868c669c974d649070e9ecbec0b367ee0b4d81"
@@ -2799,6 +2818,13 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-compose-refs" "1.0.0"
+
+"@radix-ui/react-slot@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-slot/-/react-slot-1.1.0.tgz#7c5e48c36ef5496d97b08f1357bb26ed7c714b84"
+  integrity sha512-FUCf5XMfmW4dtYl69pdS4DbxKy8nj4M7SafBgPllysxmdachynNflAdp/gCsnYWNDnge6tI9onzMp5ARYc1KNw==
+  dependencies:
+    "@radix-ui/react-compose-refs" "1.1.0"
 
 "@react-native-async-storage/async-storage@1.23.1":
   version "1.23.1"
@@ -3245,6 +3271,25 @@
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/@repeaterjs/repeater/-/repeater-3.0.6.tgz#be23df0143ceec3c69f8b6c2517971a5578fdaa2"
   integrity sha512-Javneu5lsuhwNCryN+pXH93VPQ8g0dBX7wItHFgYiwQmzE1sVdg5tWHiOgHywzL2W21XQopa7IwIEnNbmeUJYA==
+
+"@rn-primitives/separator@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@rn-primitives/separator/-/separator-1.0.3.tgz#16060cdd0bcaddbbeaac82f67aae31d641d4b43b"
+  integrity sha512-8X6NS78hCUeJSs3CeVMnK6ndVX+W+Gb07qP/xY0KfKpILXIEbpnyicWR1oMpt32dTbMmBJAptLJKdcj+s4Fq+A==
+  dependencies:
+    "@radix-ui/react-separator" "^1.0.3"
+    "@rn-primitives/slot" "1.0.3"
+    "@rn-primitives/types" "1.0.3"
+
+"@rn-primitives/slot@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@rn-primitives/slot/-/slot-1.0.3.tgz#878b488dd7844703eb0b4dbc51c239e1bdb0ca11"
+  integrity sha512-sSDYwD2upLQUOva2cmNfaJqZlN+o0E/wa8uXEDEIYj6MJsG/O0k1t0jGXMqLP8BsQ3ZaTtUbqnG9eW/VQFOmdQ==
+
+"@rn-primitives/types@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@rn-primitives/types/-/types-1.0.3.tgz#1d0b084663859a889e5b7359eb2afe62ff311adb"
+  integrity sha512-5GY4J6SBN2JosYS/8bvQZOZL+HZk85COaFlNnjiL3efoa9gH+v1dNi0F2gW/Gr0PuGF/xo/z0iOiVc5KrDsAkQ==
 
 "@rnx-kit/chromium-edge-launcher@^1.0.0":
   version "1.0.0"
