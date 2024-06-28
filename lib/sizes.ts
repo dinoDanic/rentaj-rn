@@ -6,3 +6,7 @@ export const iconSizes = {
 export const spacingSizes = {
   screen: 16,
 } as const
+
+export const borderRadius = {
+  md: 8,
+}

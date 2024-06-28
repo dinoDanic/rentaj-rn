@@ -1,3 +1,4 @@
+import { ItemPageContact } from "@/features/item/components/page-by-id/item-page-contact"
 import { ItemPageGallery } from "@/features/item/components/page-by-id/item-page-gallery"
 import { ItemPageDelivery } from "@/features/item/components/page-by-id/item-page-info/item-page-delivery"
 import { ItemPageInfo } from "@/features/item/components/page-by-id/item-page-info/item-page-info"
@@ -29,15 +30,24 @@ export default function ItemPage() {
         <ItemPageGallery />
         <Muted>{data?.itemById?.description}</Muted>
         <ItemPageInfo {...data} />
+        <ItemPageContact {...data} />
         <Separator />
         <ItemPageDelivery {...data} />
+        <Separator />
         <ItemPageLocation {...data} />
+        <Separator />
         <ItemUserProfile {...data} />
       </View>
     </FadeIn>
   )
 
-  const content = isLoading ? <ActivityIndicator /> : loadedContent
+  const loading = (
+    <View className="h-[200] items-center justify-center">
+      <ActivityIndicator />
+    </View>
+  )
+
+  const content = isLoading ? loading : loadedContent
 
   return <ScrollView contentInsetAdjustmentBehavior="automatic">{content}</ScrollView>
 }
