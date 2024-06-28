@@ -14,6 +14,7 @@ query itemById($input: ItemByIdInput) {
     user {
       id
       email
+      contactNumber
       company {
         id
         name
@@ -27,6 +28,8 @@ query itemById($input: ItemByIdInput) {
       address
       city
       id
+      lat
+      long
     }
     name
     pickUp
