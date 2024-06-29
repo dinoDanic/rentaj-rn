@@ -3,12 +3,13 @@ import { View } from "react-native"
 
 import { cn } from "@/lib/utils"
 
-import { H2, H4 } from "./typography"
+import { H2, H4, Muted } from "./typography"
 
 type ContentLayouVariant = "default" | "leading"
 
 type Props = PropsWithChildren & {
   title: string
+  description?: string
   childrenClassName?: string
   className?: string
   action?: ReactNode
@@ -23,6 +24,7 @@ export const ContentLayout: FC<Props> = ({ variant = "default", ...props }) => {
           <H4>{props.title}</H4>
           {props.action && props.action}
         </View>
+        {props.description && <Muted>{props.description}</Muted>}
         <View className={cn("", props.childrenClassName)}>{props.children}</View>
       </View>
     )

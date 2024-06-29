@@ -34,7 +34,7 @@ export default function Listings() {
         renderItem={({ item }) =>
           item ? (
             <BootyBayCard
-              onPress={() => router.push(`${routes.item.index}/${item.id}/${item.name}`)}
+              onPress={() => router.push({ pathname: routes.item.index, params: { id: item.id, name: item.name } })}
               title={item.name}
               description={item.pricePerDay}
               key={item.id}
