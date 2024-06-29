@@ -8,6 +8,7 @@ import { ItemSearchPageParams } from "."
 
 export default function ItemByIdPLayout() {
   const params = useLocalSearchParams<ItemSearchPageParams>()
+
   const headerLeft = <Button onPress={router.back} variant="secondary" size="icon" icon={ICONS({}).xIcon} />
 
   return (
@@ -16,7 +17,6 @@ export default function ItemByIdPLayout() {
         name="index"
         options={{
           title: params.name,
-          // headerBackVisible: true,
           headerLargeTitle: true,
           headerLeft: () => headerLeft,
           headerBackTitleVisible: true,

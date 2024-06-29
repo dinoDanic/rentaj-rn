@@ -1,4 +1,4 @@
-package com.anonymous.rentajrn
+package com.dinodanic.rentajrn
 
 import android.app.Application
 import android.content.res.Configuration

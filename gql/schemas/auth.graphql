@@ -4,6 +4,7 @@ mutation createSession($input: CreateSessionInput!) {
     user {
       id
       email
+      contactNumber
     }
   }
 }

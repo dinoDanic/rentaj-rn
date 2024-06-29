@@ -11,9 +11,9 @@ import { useMe } from "../hooks/use-me"
 type Props = PropsWithChildren
 
 export default function SecureView(props: Props) {
-  const { user } = useMe()
+  const { me } = useMe()
 
-  if (!user?.id) return <RenderContent />
+  if (!me?.id) return <RenderContent />
 
   return props.children
 }

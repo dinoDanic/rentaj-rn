@@ -9,7 +9,7 @@ type Props = {
   images: string[]
   className?: string
 }
-export const ImageSlider = ({ images, className }: Props) => {
+export const ImageSlider = ({ images }: Props) => {
   const [active, setActive] = useState(0)
   const { width: windowWidth } = Dimensions.get("window")
 
@@ -49,7 +49,7 @@ export const ImageSlider = ({ images, className }: Props) => {
         style={{ width, height }}
       >
         {images.map((image, index) => {
-          return <Image style={{ width, height, resizeMode: "cover" }} key={index} source={{ uri: image }} />
+          return <Image style={{ width, height }} contentFit="cover" key={index} source={{ uri: image }} />
         })}
       </ScrollView>
       <View className="absolute bottom-md flex flex-row gap-sm self-center">

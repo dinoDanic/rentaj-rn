@@ -3,6 +3,7 @@ query me {
     account {
       id
       email
+      contactNumber
     }
   }
 }

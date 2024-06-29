@@ -83,9 +83,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'com.anonymous.rentajrn'
+    namespace 'com.dinodanic.rentajrn'
     defaultConfig {
-        applicationId 'com.anonymous.rentajrn'
+        applicationId 'com.dinodanic.rentajrn'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
