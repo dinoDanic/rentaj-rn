@@ -11,6 +11,10 @@ query myListings($input: FilterItems) {
 query itemById($input: ItemByIdInput) {
   itemById(input: $input) {
     insertedAt
+    availabilitySevenDays {
+      available
+      date
+    }
     user {
       id
       email

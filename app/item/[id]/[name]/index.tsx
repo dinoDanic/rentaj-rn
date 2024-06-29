@@ -1,3 +1,4 @@
+import { ItemCheckAvaliability } from "@/features/item/components/page-by-id/item-check-avaliability"
 import { ItemPageContact } from "@/features/item/components/page-by-id/item-page-contact"
 import { ItemPageGallery } from "@/features/item/components/page-by-id/item-page-gallery"
 import { ItemPageDelivery } from "@/features/item/components/page-by-id/item-page-info/item-page-delivery"
@@ -35,6 +36,8 @@ export default function ItemPage() {
         <ItemPageDelivery {...data} />
         <Separator />
         <ItemPageLocation {...data} />
+        <Separator />
+        <ItemCheckAvaliability {...data} />
         <Separator />
         <ItemUserProfile {...data} />
       </View>
