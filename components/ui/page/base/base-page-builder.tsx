@@ -20,23 +20,27 @@ export type BasePageBuilderProps = {
 }
 
 export const BasePageBuilder = (props: BasePageBuilderProps) => {
-  if (props.isLoading) {
-    return (
-      <FadeIn>
-        <View className="h-[200] items-center justify-center">
-          <ActivityIndicator />
-        </View>
-      </FadeIn>
-    )
-  }
+  const loading = (
+    <FadeIn>
+      <View className="h-[200] items-center justify-center">
+        <ActivityIndicator />
+      </View>
+    </FadeIn>
+  )
+
+  const loaded = (
+    <View className="gap-xl">
+      {props.content.map((c, i) => {
+        return <BasePageBuilderItem key={c.id} i={i} {...c} />
+      })}
+    </View>
+  )
+
+  const content = props.isLoading ? loading : loaded
 
   return (
     <ScrollView className="px-screen" contentInsetAdjustmentBehavior="automatic">
-      <View className="gap-xl">
-        {props.content.map((c, i) => {
-          return <BasePageBuilderItem key={c.id} i={i} {...c} />
-        })}
-      </View>
+      {content}
     </ScrollView>
   )
 }

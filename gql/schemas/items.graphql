@@ -24,6 +24,9 @@ query itemById($input: ItemByIdInput) {
         name
       }
     }
+    category {
+      name
+    }
     capara
     delivery
     description

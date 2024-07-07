@@ -6,6 +6,7 @@ import { ItemPageDelivery } from "@/features/item/components/page-by-id/item-pag
 import { ItemPageDescription } from "@/features/item/components/page-by-id/item-page-info/item-page-description"
 import { ItemPageInfo } from "@/features/item/components/page-by-id/item-page-info/item-page-info"
 import { ItemPageLocation } from "@/features/item/components/page-by-id/item-page-info/item-page-location"
+import { ItemPagePrice } from "@/features/item/components/page-by-id/item-page-info/item-page-price"
 import { ItemUserProfile } from "@/features/item/components/page-by-id/item-page-info/item-user-profile"
 import { useItemByIdQuery } from "@/gql/hooks/items"
 import { router, useLocalSearchParams } from "expo-router"
@@ -44,7 +45,11 @@ export default function ItemPage() {
           router.push({ pathname: routes.item.editDescription, params: { id: params.id, name: "Kitoslav" } }),
       },
     },
-    { id: 2, Component: () => <ItemPageInfo {...data} />, editable: { title: "Uredi Informacije", onPress: () => {} } },
+    {
+      id: 2,
+      Component: () => <ItemPagePrice {...data} />,
+      editable: { title: "Uredi Informacije", onPress: () => {} },
+    },
     { id: 3, Component: () => <ItemPageContact {...data} /> },
     {
       id: 4,
@@ -61,8 +66,9 @@ export default function ItemPage() {
       Component: () => <ItemCheckAvaliability {...data} />,
       editable: { title: "Uredi dostupnost", onPress: () => {} },
     },
-    { id: 7, Component: () => <ItemUserProfile {...data} /> },
-    { id: 8, Component: () => <DeleteItemAction id={params.id!} />, showComponentInEdit: true, seperator: false },
+    { id: 7, Component: () => <ItemPageInfo {...data} />, editable: { title: "Uredi Informacije", onPress: () => {} } },
+    { id: 8, Component: () => <ItemUserProfile {...data} /> },
+    { id: 9, Component: () => <DeleteItemAction id={params.id!} />, showComponentInEdit: true, seperator: false },
   ]
 
   return <BasePageBuilder isLoading={isLoading} content={content} />
