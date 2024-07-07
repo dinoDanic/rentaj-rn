@@ -1,17 +1,17 @@
+import { DeleteItemAction } from "@/features/item/components/page-by-id/delete-item-action"
 import { ItemCheckAvaliability } from "@/features/item/components/page-by-id/item-check-avaliability"
 import { ItemPageContact } from "@/features/item/components/page-by-id/item-page-contact"
 import { ItemPageGallery } from "@/features/item/components/page-by-id/item-page-gallery"
 import { ItemPageDelivery } from "@/features/item/components/page-by-id/item-page-info/item-page-delivery"
+import { ItemPageDescription } from "@/features/item/components/page-by-id/item-page-info/item-page-description"
 import { ItemPageInfo } from "@/features/item/components/page-by-id/item-page-info/item-page-info"
 import { ItemPageLocation } from "@/features/item/components/page-by-id/item-page-info/item-page-location"
 import { ItemUserProfile } from "@/features/item/components/page-by-id/item-page-info/item-user-profile"
 import { useItemByIdQuery } from "@/gql/hooks/items"
-import { useLocalSearchParams } from "expo-router"
-import { ActivityIndicator, ScrollView, View } from "react-native"
+import { router, useLocalSearchParams } from "expo-router"
 
-import { Separator } from "@/components/ui/separator"
-import { Muted } from "@/components/ui/typography"
-import { FadeIn } from "@/components/animations/fade-in"
+import { routes } from "@/lib/routes"
+import { BasePageBuilder, BasePageBuilderContent } from "@/components/ui/page/base/base-page-builder"
 
 export type ItemSearchPageParams = {
   id: string
@@ -25,32 +25,45 @@ export default function ItemPage() {
 
   const { data, isLoading } = useItemByIdQuery({ input: { itemId: params.id } })
 
-  const loadedContent = (
-    <FadeIn>
-      <View className="gap-xl px-screen">
-        <ItemPageGallery />
-        <Muted>{data?.itemById?.description}</Muted>
-        <ItemPageInfo {...data} />
-        <ItemPageContact {...data} />
-        <Separator />
-        <ItemPageDelivery {...data} />
-        <Separator />
-        <ItemPageLocation {...data} />
-        <Separator />
-        <ItemCheckAvaliability {...data} />
-        <Separator />
-        <ItemUserProfile {...data} />
-      </View>
-    </FadeIn>
-  )
+  const content: BasePageBuilderContent[] = [
+    {
+      id: 0,
+      Component: () => <ItemPageGallery />,
+      seperator: false,
+      editable: {
+        title: "Uredi Fotografije",
+        onPress: () => router.push({ pathname: routes.item.editPhotos, params: { id: params.id, name: "Kitoslav" } }),
+      },
+    },
+    {
+      id: 1,
+      Component: () => <ItemPageDescription {...data} />,
+      editable: {
+        title: "Uredi opis",
+        onPress: () =>
+          router.push({ pathname: routes.item.editDescription, params: { id: params.id, name: "Kitoslav" } }),
+      },
+    },
+    { id: 2, Component: () => <ItemPageInfo {...data} />, editable: { title: "Uredi Informacije", onPress: () => {} } },
+    { id: 3, Component: () => <ItemPageContact {...data} /> },
+    {
+      id: 4,
+      Component: () => <ItemPageDelivery {...data} />,
+      editable: { title: "Uredi opcije dostave", onPress: () => {} },
+    },
+    {
+      id: 5,
+      Component: () => <ItemPageLocation {...data} />,
+      editable: { title: "Uredi lokaciju", onPress: () => {} },
+    },
+    {
+      id: 6,
+      Component: () => <ItemCheckAvaliability {...data} />,
+      editable: { title: "Uredi dostupnost", onPress: () => {} },
+    },
+    { id: 7, Component: () => <ItemUserProfile {...data} /> },
+    { id: 8, Component: () => <DeleteItemAction id={params.id!} />, showComponentInEdit: true, seperator: false },
+  ]
 
-  const loading = (
-    <View className="h-[200] items-center justify-center">
-      <ActivityIndicator />
-    </View>
-  )
-
-  const content = isLoading ? loading : loadedContent
-
-  return <ScrollView contentInsetAdjustmentBehavior="automatic">{content}</ScrollView>
+  return <BasePageBuilder isLoading={isLoading} content={content} />
 }

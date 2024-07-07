@@ -46,3 +46,13 @@ mutation createItem($input: CreateItemInput) {
     id
   }
 }
+
+mutation updateItem($id: ID, $input: UpdateItemInput) {
+  updateItem(id: $id, input: $input) {
+    id
+  }
+}
+
+mutation deleteItem($id: ID) {
+  deleteItem(id: $id)
+}

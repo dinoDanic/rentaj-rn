@@ -26,6 +26,7 @@ export const ViewSwithcer = () => {
   })
 
   const title = view === "explore" ? "Prebaci na iznamljivanje" : "Prebaci na istraživanje"
+
   const bottom: number = visible ? 0 : -100
   return (
     <View className="absolute bottom-lg w-full">

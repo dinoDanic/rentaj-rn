@@ -12,7 +12,8 @@ import {
   MyListingsQueryVariables,
 } from "../generated/graphql"
 
-export const queryListingsKeys = {
+export const queryItemKeys = {
+  myListingsAll: ["my-listings"],
   myListings: (args: MyListingsQueryVariables) => ["my-listings", args],
   itemById: (args: ItemByIdQueryVariables) => ["item-by-id", args],
 }
@@ -22,7 +23,7 @@ export const useMyListingsQuery = (
   options?: Partial<UseQueryOptions<MyListingsQuery, Error>>
 ): UseQueryResult<MyListingsQuery, Error> =>
   useQuery<MyListingsQuery, Error>({
-    queryKey: queryListingsKeys.myListings(variables),
+    queryKey: queryItemKeys.myListings(variables),
     queryFn: () => _client.request(MyListingsDocument, variables),
     ...options,
   })
@@ -37,7 +38,7 @@ export const useItemByIdQuery = (
   options?: Partial<UseQueryOptions<ItemByIdQuery, Error>>
 ): UseQueryResult<ItemByIdQuery, Error> =>
   useQuery<ItemByIdQuery, Error>({
-    queryKey: queryListingsKeys.itemById(variables),
+    queryKey: queryItemKeys.itemById(variables),
     queryFn: () => _client.request(ItemByIdDocument, variables),
     ...options,
   })

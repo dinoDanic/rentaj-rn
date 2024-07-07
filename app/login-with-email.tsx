@@ -36,6 +36,7 @@ export default function LoginWithEmail() {
   const onError = () => form.setError("password", { message: "Netočna lozinka ili email adresa" })
 
   const submit = async (input: CreateSessionInput) => {
+    console.log("kitaaaaaaaaaaaa")
     try {
       const res = await createSession.mutateAsync({ input })
       if (!res.createSession?.token) {
@@ -62,7 +63,7 @@ export default function LoginWithEmail() {
             secureTextEntry={true}
           />
         </FormProvider>
-        <Button loading={createSession.isPending} title="Login" onPress={form.handleSubmit(submit)} />
+        <Button title="Login" onPress={form.handleSubmit(submit)} />
         <Button
           variant="light"
           loading={createSession.isPending}

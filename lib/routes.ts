@@ -15,6 +15,8 @@ export const routes = {
   filterListingsModal: "filter-listings-modal",
   item: {
     index: "item/[id]/[name]",
+    editPhotos: "item/[id]/[name]/edit-photos-modal",
+    editDescription: "item/[id]/[name]/edit-description-modal",
   },
 } as const
 
