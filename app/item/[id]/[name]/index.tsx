@@ -41,14 +41,16 @@ export default function ItemPage() {
       Component: () => <ItemPageDescription {...data} />,
       editable: {
         title: "Uredi opis",
-        onPress: () =>
-          router.push({ pathname: routes.item.editDescription, params: { id: params.id, name: "Kitoslav" } }),
+        onPress: () => router.push({ pathname: routes.item.editDescription, params: { id: params.id, name: "a" } }),
       },
     },
     {
       id: 2,
       Component: () => <ItemPagePrice {...data} />,
-      editable: { title: "Uredi Informacije", onPress: () => {} },
+      editable: {
+        title: "Uredi Cijenu",
+        onPress: () => router.push({ pathname: routes.item.editPrice, params: { id: params.id, name: "a" } }),
+      },
     },
     { id: 3, Component: () => <ItemPageContact {...data} /> },
     {

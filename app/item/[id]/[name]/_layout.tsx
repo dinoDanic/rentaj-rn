@@ -58,6 +58,10 @@ export default function ItemByIdPLayout() {
         name="edit-description-modal"
         options={{ presentation: "modal", headerLargeTitle: true, title: "Uredi Opis", headerShadowVisible: false }}
       />
+      <Stack.Screen
+        name="edit-price-modal"
+        options={{ presentation: "modal", headerLargeTitle: true, title: "Uredi Cijene", headerShadowVisible: false }}
+      />
     </Stack>
   )
 }

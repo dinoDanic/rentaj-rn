@@ -17,6 +17,7 @@ export const routes = {
     index: "item/[id]/[name]",
     editPhotos: "item/[id]/[name]/edit-photos-modal",
     editDescription: "item/[id]/[name]/edit-description-modal",
+    editPrice: "item/[id]/[name]/edit-price-modal",
   },
 } as const
 

@@ -274,7 +274,9 @@ export type Session = {
 };
 
 export type UpdateItemInput = {
+  capara?: InputMaybe<Scalars['Decimal']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
+  pricePerDay?: InputMaybe<Scalars['Decimal']['input']>;
 };
 
 export type User = {

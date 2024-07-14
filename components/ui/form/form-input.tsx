@@ -40,7 +40,9 @@ export const FormCurrencyInput = <C,>({ name, label }: FormInputProps<C>) => {
           {label && <Label nativeID={label}>{label}</Label>}
           <CurrencyInput
             value={value}
-            onChangeValue={onChange}
+            onChangeValue={(newValue) => {
+              onChange(newValue ?? 0)
+            }}
             onBlur={onBlur}
             minValue={0.0}
             precision={2}
