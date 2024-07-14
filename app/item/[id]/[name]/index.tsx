@@ -56,7 +56,10 @@ export default function ItemPage() {
     {
       id: 4,
       Component: () => <ItemPageDelivery {...data} />,
-      editable: { title: "Uredi opcije dostave", onPress: () => {} },
+      editable: {
+        title: "Uredi opcije dostave",
+        onPress: () => router.push({ pathname: routes.item.editDelivery, params: { id: params.id, name: "a" } }),
+      },
     },
     {
       id: 5,

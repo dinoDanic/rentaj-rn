@@ -62,6 +62,15 @@ export default function ItemByIdPLayout() {
         name="edit-price-modal"
         options={{ presentation: "modal", headerLargeTitle: true, title: "Uredi Cijene", headerShadowVisible: false }}
       />
+      <Stack.Screen
+        name="edit-delivery-modal"
+        options={{
+          presentation: "modal",
+          headerLargeTitle: true,
+          title: "Uredi Opcije Dostave",
+          headerShadowVisible: false,
+        }}
+      />
     </Stack>
   )
 }

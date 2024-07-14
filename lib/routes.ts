@@ -18,6 +18,7 @@ export const routes = {
     editPhotos: "item/[id]/[name]/edit-photos-modal",
     editDescription: "item/[id]/[name]/edit-description-modal",
     editPrice: "item/[id]/[name]/edit-price-modal",
+    editDelivery: "item/[id]/[name]/edit-delivery-modal",
   },
 } as const
 

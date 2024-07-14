@@ -275,7 +275,9 @@ export type Session = {
 
 export type UpdateItemInput = {
   capara?: InputMaybe<Scalars['Decimal']['input']>;
+  delivery?: InputMaybe<Scalars['Boolean']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
+  pickUp?: InputMaybe<Scalars['Boolean']['input']>;
   pricePerDay?: InputMaybe<Scalars['Decimal']['input']>;
 };
 

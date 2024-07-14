@@ -21,10 +21,8 @@ export const FormSwitch = <C,>({ name, className, label, onCheckedChange }: Form
       control={control}
       name={name}
       render={({ field: { value, onChange, onBlur }, fieldState: { error } }) => {
-        console.log("control value", value)
-
         return (
-          <View className={cn("flex-row items-center gap-md", className)}>
+          <View className={cn("flex-row items-center justify-between gap-md", className)}>
             <Label nativeID={`${name}`}>{label}</Label>
             <Switch
               onBlur={onBlur}
@@ -41,8 +39,3 @@ export const FormSwitch = <C,>({ name, className, label, onCheckedChange }: Form
     />
   )
 }
-
-// <View className="gap-md">
-//   <Input {...inputProps} value={value ?? ""} onChangeText={onChange} onBlur={onBlur} />
-//   {error && <Text className="text-destructive">{error.message}</Text>}
-// </View>
