@@ -18,7 +18,7 @@ export default function Index() {
     setRefreshing(false)
   }, [])
 
-  return <Redirect href={{ pathname: routes.item.index, params: { id: "3", name: "Kita" } }} />
+  return <Redirect href={{ pathname: routes.createItem }} />
 
   return (
     <>

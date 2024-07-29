@@ -1,9 +1,11 @@
 import { CreateItemForm } from "@/features/listings/types"
-import { router } from "expo-router"
+import * as ImagePicker from "expo-image-picker"
+import { ImagePickerAsset } from "expo-image-picker"
+import { ref, uploadBytes } from "firebase/storage"
 import { useFormContext } from "react-hook-form"
 import { ScrollView, View } from "react-native"
 
-import { routes } from "@/lib/routes"
+import { storage } from "@/lib/firebase"
 import { Button } from "@/components/ui/button"
 import { FormImages } from "@/components/ui/form/form-images"
 import { FormInput } from "@/components/ui/form/form-input"
@@ -11,13 +13,38 @@ import { KeyboardAvoidingView } from "@/components/ui/keyboard-avoiding-view"
 
 export default function CreateListingsIndexPage() {
   const form = useFormContext<CreateItemForm>()
-  const { trigger } = form
 
   const check = async () => {
-    const isValid = await trigger(["name", "description", "images"])
+    const images = form.getValues("images")
+    if (images && images.length > 0) {
+      await Promise.all(images.map((image, index) => uploadImage(image, index)))
+    }
+  }
 
-    if (isValid) {
-      router.push(routes.createItemPrice)
+  const uploadImage = async (image: ImagePickerAsset, index: number) => {
+    if (!image || !image.uri) {
+      console.log(`Image or Image URI is missing for image at index ${index}`)
+      return
+    }
+
+    console.log(`Uploading image at index ${index}: ${image.uri}`)
+
+    try {
+      const response = await fetch(image.uri)
+      if (!response.ok) {
+        console.log(`Failed to fetch image at index ${index}: ${response.statusText}`)
+        return
+      }
+
+      const blob = await response.blob()
+      const fileName = `image_${Date.now()}_${index}`
+      const storageRef = ref(storage, fileName)
+
+      console.log(`Uploading to ${storageRef.fullPath}`)
+      await uploadBytes(storageRef, blob)
+      console.log(`Uploaded image at index ${index}`)
+    } catch (error) {
+      console.error(`Error uploading image at index ${index}:`, error)
     }
   }
 
@@ -37,7 +64,7 @@ export default function CreateListingsIndexPage() {
         </View>
       </ScrollView>
       <KeyboardAvoidingView>
-        <Button onPress={() => check()} title="Nastavi" />
+        <Button onPress={check} title="Nastavi" />
       </KeyboardAvoidingView>
     </View>
   )
