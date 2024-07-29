@@ -43,7 +43,7 @@ export const FormImages = <C extends Record<string, any>>({ name, label }: FormI
     const images = getValues(name) as ImagePicker.ImagePickerAsset[] | null
     setValue(
       name,
-      //@ts-ignore
+      // @ts-ignore
       images?.filter((image) => image.uri !== uri)
     )
   }
