@@ -19,13 +19,13 @@ type Props = PropsWithChildren & {
 export const ContentLayout: FC<Props> = ({ variant = "default", ...props }) => {
   if (variant === "default") {
     return (
-      <View className={cn("gap-md", props.className)}>
+      <View className={cn("gap-md px-screen", props.className)}>
         <View className="flex-row justify-between">
           <H4>{props.title}</H4>
           {props.action && props.action}
         </View>
         {props.description && <Muted>{props.description}</Muted>}
-        <View className={cn("", props.childrenClassName)}>{props.children}</View>
+        <View className={cn("-mx-screen", props.childrenClassName)}>{props.children}</View>
       </View>
     )
   }

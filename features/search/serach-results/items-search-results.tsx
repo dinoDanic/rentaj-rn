@@ -1,6 +1,8 @@
 import { SearchPageQuery } from "@/gql/generated/graphql"
 import { UseQueryResult } from "@tanstack/react-query"
+import { Link } from "expo-router"
 
+import { routes } from "@/lib/routes"
 import { Button } from "@/components/ui/button"
 import { TallCard } from "@/components/ui/cards/tall-card/tall-card"
 import { TallCardBuilder } from "@/components/ui/cards/tall-card/tall-card-builder"
@@ -12,7 +14,7 @@ type Props = {
 
 export default function ItemsSearchResults(props: Props) {
   return (
-    <ContentLayout childrenClassName="p-0" title="Proizvodi" action={<SeeAll />}>
+    <ContentLayout title="Proizvodi" action={<SeeAll />}>
       <TallCardBuilder
         data={props.query.data?.searchItems?.edges}
         renderItem={(e) => {
@@ -23,7 +25,16 @@ export default function ItemsSearchResults(props: Props) {
           const withDelivery = `${city} 🚗`
           const withoutDelivery = city
           const title = item.delivery ? withDelivery : withoutDelivery
-          return <TallCard text1={item.name} price={item.pricePerDay} footer={{ title: title }} />
+          return (
+            <Link href={{ pathname: routes.item.index, params: { id: item.id, name: item.name } }}>
+              <TallCard
+                text1={item.name}
+                price={item.pricePerDay}
+                footer={{ title: title }}
+                source={item.images?.at(0)?.imageUrl}
+              />
+            </Link>
+          )
         }}
       />
     </ContentLayout>

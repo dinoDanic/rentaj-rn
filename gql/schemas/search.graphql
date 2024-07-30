@@ -20,6 +20,10 @@ query searchPage($after: String, $before: String, $first: Int, $last: Int, $inpu
     edges {
       cursor
       node {
+        id
+        images {
+          imageUrl
+        }
         name
         pricePerDay
         delivery
