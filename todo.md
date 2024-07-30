@@ -1,0 +1,1 @@
+- [ ] when deleting item, delete all images from firebase

@@ -1,0 +1,5 @@
+mutation addImageToItem($input: AddImageToItemInput) {
+  addImageToItem(input: $input) {
+    id
+  }
+}

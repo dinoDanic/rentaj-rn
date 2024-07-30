@@ -1,16 +1,17 @@
 import { useMe } from "@/features/auth/hooks/use-me"
 import { CreateItemForm } from "@/features/listings/types"
-import { CreateItemDocument, CreateItemMutationVariables } from "@/gql/generated/graphql"
+import { AddImageToItemDocument, CreateItemDocument, CreateItemMutationVariables } from "@/gql/generated/graphql"
 import { _client } from "@/lib"
 import { useMutation } from "@tanstack/react-query"
 import { Image } from "expo-image"
 import { ImagePickerAsset } from "expo-image-picker"
 import { Link, router } from "expo-router"
-import { ref, uploadBytesResumable } from "firebase/storage"
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage"
 import { useFormContext } from "react-hook-form"
 import { View } from "react-native"
 
 import { storage } from "@/lib/firebase"
+import { setFirebaseRef } from "@/lib/firebase/use-list-images"
 import { routes } from "@/lib/routes"
 import { Button } from "@/components/ui/button"
 import { BaseCard } from "@/components/ui/cards/base-card"
@@ -51,10 +52,19 @@ export default function PreviewPage() {
       }
 
       const blob = await response.blob()
-      const fileName = `${me?.id}/${productId}/${image.fileName}`
-      const storageRef = ref(storage, fileName)
+      if (!productId || !image.fileName || !me?.id) return
 
-      await uploadBytesResumable(storageRef, blob)
+      const fileStorage = setFirebaseRef.productImage({
+        productId: productId,
+        fileName: image.fileName,
+        userId: me.id,
+      })
+
+      const storageRef = ref(storage, fileStorage)
+
+      const res = await uploadBytesResumable(storageRef, blob)
+      const url = await getDownloadURL(ref(storage, res.ref.fullPath))
+      await _client.request(AddImageToItemDocument, { input: { name: res.ref.name, itemId: productId, imageUrl: url } })
     } catch {
       //
     }

@@ -29,7 +29,7 @@ export default function ItemPage() {
   const content: BasePageBuilderContent[] = [
     {
       id: 0,
-      Component: () => <ItemPageGallery />,
+      Component: () => <ItemPageGallery {...data} />,
       seperator: false,
       editable: {
         title: "Uredi Fotografije",
