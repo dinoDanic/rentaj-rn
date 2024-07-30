@@ -38,6 +38,7 @@ export default function Listings() {
               title={item.name}
               description={item.pricePerDay}
               key={item.id}
+              source={item.images?.at(0)?.imageUrl}
             />
           ) : null
         }

@@ -4,6 +4,9 @@ query myListings($input: FilterItems) {
       id
       name
       pricePerDay
+      images {
+        imageUrl
+      }
     }
   }
 }

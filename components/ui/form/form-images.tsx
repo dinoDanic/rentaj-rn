@@ -27,7 +27,7 @@ export const FormImages = <C extends Record<string, any>>({ name, label }: FormI
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: false,
       aspect: [4, 3],
-      quality: 1,
+      quality: 0.5,
       selectionLimit: 6,
       allowsMultipleSelection: true,
     })
