@@ -15,10 +15,10 @@ export const routes = {
   filterListingsModal: "filter-listings-modal",
   item: {
     index: "/item/[id]/[name]",
-    editPhotos: "item/[id]/[name]/edit-photos-modal",
-    editDescription: "item/[id]/[name]/edit-description-modal",
-    editPrice: "item/[id]/[name]/edit-price-modal",
-    editDelivery: "item/[id]/[name]/edit-delivery-modal",
+    editPhotos: "/item/[id]/[name]/edit-photos-modal",
+    editDescription: "/item/[id]/[name]/edit-description-modal",
+    editPrice: "/item/[id]/[name]/edit-price-modal",
+    editDelivery: "/item/[id]/[name]/edit-delivery-modal",
   },
 } as const
 

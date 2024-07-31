@@ -1,6 +1,7 @@
 import React from "react"
 import { useMyListings } from "@/features/listings/store/use-my-listings"
 import { useMyListingsQuery } from "@/gql/hooks/items"
+import { getRandomImage } from "@/helpers/images"
 import { router } from "expo-router"
 import { ActivityIndicator, RefreshControl, ScrollView } from "react-native"
 
@@ -31,17 +32,19 @@ export default function Listings() {
     <FadeIn>
       <BootyBayCardBuilder
         data={data?.me?.items}
-        renderItem={({ item }) =>
-          item ? (
+        renderItem={({ item }) => {
+          const itemImage = item?.images?.at(0)?.imageUrl
+          const image = itemImage ?? getRandomImage()
+          return item ? (
             <BootyBayCard
               onPress={() => router.push({ pathname: routes.item.index, params: { id: item.id, name: item.name } })}
               title={item.name}
               description={item.pricePerDay}
               key={item.id}
-              source={item.images?.at(0)?.imageUrl}
+              source={image}
             />
           ) : null
-        }
+        }}
       />
     </FadeIn>
   )

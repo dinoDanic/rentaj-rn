@@ -14,18 +14,19 @@ type Props = PropsWithChildren & {
   className?: string
   action?: ReactNode
   variant?: ContentLayouVariant
+  autoSpace?: boolean
 }
 
 export const ContentLayout: FC<Props> = ({ variant = "default", ...props }) => {
   if (variant === "default") {
     return (
-      <View className={cn("gap-md px-screen", props.className)}>
-        <View className="flex-row justify-between">
+      <View className={cn("gap-md", props.className)}>
+        <View className={cn("flex-row justify-between", props.autoSpace && "px-screen")}>
           <H4>{props.title}</H4>
           {props.action && props.action}
         </View>
         {props.description && <Muted>{props.description}</Muted>}
-        <View className={cn("-mx-screen", props.childrenClassName)}>{props.children}</View>
+        <View className={cn("", props.childrenClassName)}>{props.children}</View>
       </View>
     )
   }

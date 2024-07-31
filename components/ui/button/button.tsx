@@ -69,11 +69,12 @@ type ButtonProps = React.ComponentPropsWithoutRef<typeof Pressable> &
     sideIcon?: React.ReactNode
     icon?: React.ReactNode
     loading?: boolean
+    titleClassName?: string
   }
 
 const Button = React.forwardRef<React.ElementRef<typeof Pressable>, ButtonProps>(
-  ({ className, variant, size, disabled, ...props }, ref) => {
-    const titleContent = <Text>{props.title}</Text>
+  ({ className, variant, size, disabled, titleClassName, ...props }, ref) => {
+    const titleContent = <Text className={titleClassName}>{props.title}</Text>
 
     const titleWithIcon = props.title ? (
       <View className="flex-row items-center gap-sm">

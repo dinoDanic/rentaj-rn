@@ -63,7 +63,14 @@ export const EditableView = (props: EditableViewProps) => {
         transition={{ type: "spring", delay: delay }}
         className={cn("absolute flex h-full w-full items-center justify-center", !isEditMode && "z-[-100]")}
       >
-        <Button onPress={onPress} variant="link" className="shadow" size="sm" title={props.options?.title} />
+        <Button
+          titleClassName="shadow-md shadow-black"
+          onPress={onPress}
+          variant="link"
+          className="underline"
+          size="sm"
+          title={props.options?.title}
+        />
       </MotiView>
     </MotiView>
   )

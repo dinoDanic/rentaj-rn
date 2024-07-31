@@ -39,7 +39,7 @@ export const InfoCardBuilder = <D,>(props: InfoCardBuilderProps<D>) => {
         <FlashList
           horizontal
           data={props.data}
-          className=""
+          className="pl-screen"
           renderItem={props.renderItem}
           ItemSeparatorComponent={() => <View className="w-2" />}
           showsHorizontalScrollIndicator={false}

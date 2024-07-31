@@ -9,7 +9,7 @@ import { ShowMoreCategories } from "./show-more-categories"
 
 export const RenderInfoCategories = () => {
   return (
-    <ContentLayout title="Kategorije" className="px-screen" action={<ShowMoreCategories />}>
+    <ContentLayout autoSpace title="Kategorije" action={<ShowMoreCategories />}>
       <RenderContent />
     </ContentLayout>
   )

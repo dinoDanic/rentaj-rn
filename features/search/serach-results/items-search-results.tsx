@@ -1,4 +1,5 @@
 import { SearchPageQuery } from "@/gql/generated/graphql"
+import { getRandomImage, randomImages } from "@/helpers/images"
 import { UseQueryResult } from "@tanstack/react-query"
 import { Link } from "expo-router"
 
@@ -14,7 +15,7 @@ type Props = {
 
 export default function ItemsSearchResults(props: Props) {
   return (
-    <ContentLayout title="Proizvodi" action={<SeeAll />}>
+    <ContentLayout title="Proizvodi" autoSpace action={<SeeAll />}>
       <TallCardBuilder
         data={props.query.data?.searchItems?.edges}
         renderItem={(e) => {
@@ -25,14 +26,12 @@ export default function ItemsSearchResults(props: Props) {
           const withDelivery = `${city} 🚗`
           const withoutDelivery = city
           const title = item.delivery ? withDelivery : withoutDelivery
+          const randomImage = getRandomImage()
+          const itemImage = item.images?.at(0)?.imageUrl
+          const image = itemImage ?? randomImage
           return (
             <Link href={{ pathname: routes.item.index, params: { id: item.id, name: item.name } }}>
-              <TallCard
-                text1={item.name}
-                price={item.pricePerDay}
-                footer={{ title: title }}
-                source={item.images?.at(0)?.imageUrl}
-              />
+              <TallCard text1={item.name} price={item.pricePerDay} footer={{ title: title }} source={image} />
             </Link>
           )
         }}
