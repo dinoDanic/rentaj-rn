@@ -50,6 +50,8 @@ export default function CreateItemLayout() {
           <Stack.Screen
             name="preview"
             options={{
+              headerLargeTitle: true,
+              headerShadowVisible: false,
               title: "Pregled",
             }}
           />

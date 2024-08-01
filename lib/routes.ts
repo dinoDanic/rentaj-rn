@@ -11,7 +11,7 @@ export const routes = {
   createItemInfo: "create-item/info",
   createItemPrice: "create-item/price",
   createItemPreview: "create-item/preview",
-  createItemSuccess: "create-item/success",
+  createItemSuccess: "/create-item/success",
   filterListingsModal: "filter-listings-modal",
   item: {
     index: "/item/[id]/[name]",

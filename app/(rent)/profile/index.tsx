@@ -1,6 +1,6 @@
 import React from "react"
-import { ScrollView } from "react-native"
+import { ProfilePage } from "@/features/profile/page/profile-page"
 
 export default function TodayPage() {
-  return <ScrollView contentInsetAdjustmentBehavior="automatic"></ScrollView>
+  return <ProfilePage />
 }

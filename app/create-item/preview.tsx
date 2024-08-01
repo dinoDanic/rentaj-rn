@@ -3,9 +3,8 @@ import { CreateItemForm } from "@/features/listings/types"
 import { AddImageToItemDocument, CreateItemDocument, CreateItemMutationVariables } from "@/gql/generated/graphql"
 import { _client } from "@/lib"
 import { useMutation } from "@tanstack/react-query"
-import { Image } from "expo-image"
 import { ImagePickerAsset } from "expo-image-picker"
-import { Link, router } from "expo-router"
+import { router } from "expo-router"
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage"
 import { useFormContext } from "react-hook-form"
 import { View } from "react-native"
@@ -14,9 +13,9 @@ import { storage } from "@/lib/firebase"
 import { setFirebaseRef } from "@/lib/firebase/use-list-images"
 import { routes } from "@/lib/routes"
 import { Button } from "@/components/ui/button"
-import { BaseCard } from "@/components/ui/cards/base-card"
-import { Text } from "@/components/ui/text"
-import { H2, Small } from "@/components/ui/typography"
+import { ImageSlider } from "@/components/ui/image-slider"
+import { InfoAnswer } from "@/components/ui/info-answer"
+import { BasePageBuilder } from "@/components/ui/page/base/base-page-builder"
 
 type UploadMutationArgs = {
   images: ImagePickerAsset[]
@@ -100,27 +99,38 @@ export default function PreviewPage() {
   const isMutating = uploadImagesMutation.isPending || createItemMutation.isPending
 
   return (
-    <View className="flex-1 justify-between px-screen pt-lg">
-      <View className="gap-md">
-        <Link href={routes.createItemInfo}>
-          <H2>{formData.name}</H2>
-        </Link>
-        <Link href={routes.createItemInfo}>
-          <Small>{formData.description}</Small>
-        </Link>
-        <View className="flex-row gap-sm">
-          {formData.images.map((image) => (
-            <Image key={image.uri} source={image.uri} style={{ width: 100, height: 100, borderRadius: 10 }} />
-          ))}
-        </View>
-        <Link href={routes.createItemPrice}>
-          <BaseCard className="w-full flex-row justify-between">
-            <Text>Cijena po danu:</Text>
-            <Text>{formData.pricePerDay.toFixed(2)} Eur</Text>
-          </BaseCard>
-        </Link>
-      </View>
-      <Button loading={isMutating} title="Kreiraj" onPress={form.handleSubmit(create)} />
-    </View>
+    <BasePageBuilder
+      content={[
+        {
+          id: 0,
+          Component: () => <ImageSlider images={form.getValues("images").map((im) => im.uri)} />,
+          seperator: false,
+        },
+        {
+          id: 1,
+          Component: () => (
+            <View className="gap-sm">
+              <InfoAnswer info="Naziv" answer={formData.name} onPress={() => router.push(routes.createItemInfo)} />
+              <InfoAnswer
+                info="Cijena po danu"
+                answer={`${formData.pricePerDay.toFixed(2)} Eur`}
+                onPress={() => router.push(routes.createItemPrice)}
+              />
+              <InfoAnswer
+                info="Opis"
+                answer={formData.description}
+                onPress={() => router.push(routes.createItemInfo)}
+              />
+            </View>
+          ),
+        },
+        {
+          id: 2,
+          Component: () => (
+            <Button loading={isMutating} title="Kreiraj" onPress={form.handleSubmit(create)} className="" />
+          ),
+        },
+      ]}
+    />
   )
 }

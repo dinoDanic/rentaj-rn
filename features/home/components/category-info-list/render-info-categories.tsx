@@ -26,7 +26,9 @@ const RenderContent = () => {
     <InfoCardBuilder
       isLoading={isLoading}
       data={data?.parentCategories}
-      renderItem={(c) => (c.item ? <CategoryInfoCard key={c.item.id} category={c.item} /> : null)}
+      renderItem={(c) => {
+        return c.item ? <CategoryInfoCard key={c.item.id} category={c.item} /> : null
+      }}
     />
   )
 }

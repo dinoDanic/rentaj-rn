@@ -64,14 +64,14 @@ export default function ItemPage() {
     {
       id: 5,
       Component: () => <ItemPageLocation {...data} />,
-      editable: { title: "Uredi lokaciju", onPress: () => {} },
+      editable: { title: "Uredi lokaciju", onPress: () => { } },
     },
     {
       id: 6,
       Component: () => <ItemCheckAvaliability {...data} />,
-      editable: { title: "Uredi dostupnost", onPress: () => {} },
+      editable: { title: "Uredi dostupnost", onPress: () => { } },
     },
-    { id: 7, Component: () => <ItemPageInfo {...data} />, editable: { title: "Uredi Informacije", onPress: () => {} } },
+    { id: 7, Component: () => <ItemPageInfo {...data} />, editable: { title: "Uredi Informacije", onPress: () => { } } },
     { id: 8, Component: () => <ItemUserProfile {...data} /> },
     { id: 9, Component: () => <DeleteItemAction id={params.id!} />, showComponentInEdit: true, seperator: false },
   ]

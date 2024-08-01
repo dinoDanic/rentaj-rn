@@ -42,6 +42,7 @@ query searchPage($after: String, $before: String, $first: Int, $last: Int, $inpu
   searchCategories(input: $input) {
     id
     name
+    imageUrl
     itemsCount
   }
 }
