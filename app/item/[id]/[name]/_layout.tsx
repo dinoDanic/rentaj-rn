@@ -2,6 +2,7 @@ import React from "react"
 import { useMe } from "@/features/auth/hooks/use-me"
 import { useItemByIdQuery } from "@/gql/hooks/items"
 import { router, Stack, useLocalSearchParams } from "expo-router"
+import { Text } from "react-native"
 
 import { ICONS } from "@/lib/icons/icon-with-classname"
 import { Button } from "@/components/ui/button"
@@ -13,12 +14,19 @@ import { ItemSearchPageParams } from "."
 export default function ItemByIdPLayout() {
   const params = useLocalSearchParams<ItemSearchPageParams>()
   const { toggleEditMode, isEditMode } = useEditableView()
-  const { data } = useItemByIdQuery({ input: { itemId: params.id! } }, { enabled: Boolean(params.id) })
+
+  const { data, isError, error } = useItemByIdQuery({ input: { itemId: params.id! } }, { enabled: Boolean(params.id) })
   const { me } = useMe()
 
-  if (!me) throw Error("no me")
+  console.log({
+    data,
+    me,
+    error,
+  })
 
-  const isOwner = me.id === data?.itemById?.user.id
+  if (isError) return <Text>Something went wrong</Text>
+
+  const isOwner = me?.id === data?.itemById?.user.id
 
   const title = isEditMode ? "Spremi" : "Uredi"
 

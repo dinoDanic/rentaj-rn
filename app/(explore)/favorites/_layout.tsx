@@ -1,15 +1,17 @@
-import React from "react"
 import { Stack } from "expo-router"
 
-export default function TodayLayout() {
+export type SearchPageForm = {
+  query: string
+}
+
+export default function Layout() {
   return (
     <Stack>
       <Stack.Screen
-        name="today"
+        name="index"
         options={{
-          title: "Danas",
           headerLargeTitle: true,
-          headerShadowVisible: false,
+          title: "Favoriti",
           headerBlurEffect: "regular",
           headerTransparent: true,
         }}

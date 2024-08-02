@@ -20,6 +20,11 @@ export const routes = {
     editPrice: "/item/[id]/[name]/edit-price-modal",
     editDelivery: "/item/[id]/[name]/edit-delivery-modal",
   },
+  order: {
+    new: {
+      index: "/order/new/[id]",
+    },
+  },
 } as const
 
 export type RouteKeys = keyof typeof routes
