@@ -89,7 +89,7 @@ export default function PreviewPage() {
         await uploadImagesMutation.mutateAsync({ images, productId: res.createItem.id })
       }
       if (res.createItem?.id) {
-        router.push(routes.createItemSuccess)
+        router.push(routes.createItem.success)
       }
     } catch {
       //

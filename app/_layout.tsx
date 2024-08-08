@@ -29,7 +29,7 @@ export default function RootLayout() {
           }}
         />
         <Stack.Screen
-          name={routes.filterListingsModal}
+          name={routes.createItem.listingsModal}
           options={{ presentation: "formSheet", headerTransparent: true }}
         />
       </Stack>

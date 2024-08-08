@@ -13,7 +13,7 @@ export default function PricePage() {
   const form = useFormContext<CreateItemForm>()
   const submit = async () => {
     const valid = await form.trigger(["pricePerDay"])
-    if (valid) router.push(routes.createItemPreview)
+    if (valid) router.push(routes.createItem.location)
   }
   return (
     <View className="flex-1 justify-between px-screen pt-lg">

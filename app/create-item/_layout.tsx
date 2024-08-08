@@ -48,6 +48,12 @@ export default function CreateItemLayout() {
             }}
           />
           <Stack.Screen
+            name="location"
+            options={{
+              title: "Lokacija",
+            }}
+          />
+          <Stack.Screen
             name="preview"
             options={{
               headerLargeTitle: true,

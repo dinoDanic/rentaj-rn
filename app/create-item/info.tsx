@@ -16,7 +16,7 @@ export default function CreateListingsIndexPage() {
     const isValid = await trigger(["name", "description", "images"])
 
     if (isValid) {
-      router.push(routes.createItemPrice)
+      router.push(routes.createItem.price)
     }
   }
 

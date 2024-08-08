@@ -13,7 +13,7 @@ export const ListingsHeader = () => {
     <View className="flex-row gap-sm pr-screen">
       <ListingsFilter />
       <Button
-        onPress={() => router.push(routes.createItem)}
+        onPress={() => router.push(routes.createItem.index)}
         variant="secondary"
         size="icon"
         icon={<PlusIcon size={iconSizes.md} className="text-muted-foreground" />}

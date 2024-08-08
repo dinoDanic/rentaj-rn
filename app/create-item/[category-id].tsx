@@ -60,7 +60,7 @@ export default function CategoryById() {
 
 const RenderCategoryItem = (category: Category) => {
   const haveChildren = Boolean(category?.childCategories?.length)
-  const href = haveChildren ? `${routes.createItem}/${category.id}` : undefined
+  const href = haveChildren ? `${routes.createItem.index}/${category.id}` : undefined
   const form = useFormContext<CreateItemForm>()
 
   return category ? (
@@ -70,7 +70,7 @@ const RenderCategoryItem = (category: Category) => {
           router.push(href)
         } else {
           form.setValue("category", category)
-          router.navigate(routes.createItemInfo)
+          router.navigate(routes.createItem.info)
         }
       }}
       name={category.name}

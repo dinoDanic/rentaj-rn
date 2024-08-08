@@ -16,13 +16,13 @@ export default function CreateItemChooseCategoryPage() {
     const isValid = await form.trigger(["category"])
 
     if (isValid) {
-      router.push(routes.createItemInfo)
+      router.push(routes.createItem.info)
     } else {
       Alert.alert("Kategorija je obavezna")
     }
   }
 
-  const openList = () => router.push(`${routes.createItem}/0`)
+  const openList = () => router.push({ pathname: routes.createItem.category, params: { "category-id": "0" } })
 
   const changeCategory = () => {
     form.setValue("category", undefined)
