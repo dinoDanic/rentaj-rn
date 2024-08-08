@@ -10,7 +10,6 @@ import { SafeAreaView, ScrollView, View } from "react-native"
 import { queryClient } from "@/lib/react-query/query-client"
 import { Button } from "@/components/ui/button"
 import { FormSwitch } from "@/components/ui/form/form-switch"
-import { FormTextArea } from "@/components/ui/form/form-text-area"
 
 import { ItemSearchPageParams } from "."
 
@@ -30,7 +29,6 @@ export default function Page() {
     if (data?.itemById) {
       form.reset(data?.itemById)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data])
 
   const submit = async (data: Item) => {

@@ -1,5 +1,5 @@
 import { SearchPageQuery } from "@/gql/generated/graphql"
-import { getRandomImage, randomImages } from "@/helpers/images"
+import { getRandomImage } from "@/helpers/images"
 import { UseQueryResult } from "@tanstack/react-query"
 import { Link } from "expo-router"
 

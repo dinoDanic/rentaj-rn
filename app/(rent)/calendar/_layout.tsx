@@ -1,5 +1,4 @@
 import React from "react"
-import { ListingsHeader } from "@/features/listings/components/listings-header/listings-header"
 import { Stack } from "expo-router"
 
 export default function ListingsLayout() {

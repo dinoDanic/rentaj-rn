@@ -66,4 +66,3 @@ mutation updateItem($id: ID, $input: UpdateItemInput) {
 mutation deleteItem($id: ID) {
   deleteItem(id: $id)
 }
-

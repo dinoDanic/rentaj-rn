@@ -15,10 +15,11 @@ import {
   XCircleIcon,
   XIcon,
 } from "lucide-react-native"
+//@ts-ignore
 import { cssInterop } from "nativewind"
 
-import { cn } from "../utils"
 import { iconSizes } from "../sizes"
+import { cn } from "../utils"
 
 export function iconWithClassName(icon: LucideIcon) {
   cssInterop(icon, {

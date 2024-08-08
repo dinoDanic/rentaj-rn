@@ -1,44 +1,29 @@
-import * as React from 'react';
-import { Pressable, View, type GestureResponderEvent } from 'react-native';
-import * as Slot from '~/components/primitives/slot';
-import type {
-  PressableRef,
-  SlottablePressableProps,
-  SlottableViewProps,
-  ViewRef,
-} from '~/components/primitives/types';
-import type { SwitchRootProps } from './types';
+import * as React from "react"
+import * as Slot from "~/components/primitives/slot"
+import type { PressableRef, SlottablePressableProps, SlottableViewProps, ViewRef } from "~/components/primitives/types"
+import { Pressable, View, type GestureResponderEvent } from "react-native"
 
-const Root = React.forwardRef<
-  PressableRef,
-  SlottablePressableProps & SwitchRootProps
->(
+import type { SwitchRootProps } from "./types"
+
+const Root = React.forwardRef<PressableRef, SlottablePressableProps & SwitchRootProps>(
   (
-    {
-      asChild,
-      checked,
-      onCheckedChange,
-      disabled,
-      onPress: onPressProp,
-      'aria-valuetext': ariaValueText,
-      ...props
-    },
+    { asChild, checked, onCheckedChange, disabled, onPress: onPressProp, "aria-valuetext": ariaValueText, ...props },
     ref
   ) => {
     function onPress(ev: GestureResponderEvent) {
-      if (disabled) return;
-      onCheckedChange(!checked);
-      onPressProp?.(ev);
+      if (disabled) return
+      onCheckedChange(!checked)
+      onPressProp?.(ev)
     }
 
-    const Component = asChild ? Slot.Pressable : Pressable;
+    const Component = asChild ? Slot.Pressable : Pressable
     return (
       <Component
         ref={ref}
         aria-disabled={disabled}
-        role='switch'
+        role="switch"
         aria-checked={checked}
-        aria-valuetext={ariaValueText ?? checked ? 'on' : 'off'}
+        aria-valuetext={ariaValueText ?? checked ? "on" : "off"}
         onPress={onPress}
         accessibilityState={{
           checked,
@@ -47,19 +32,17 @@ const Root = React.forwardRef<
         disabled={disabled}
         {...props}
       />
-    );
+    )
   }
-);
+)
 
-Root.displayName = 'RootNativeSwitch';
+Root.displayName = "RootNativeSwitch"
 
-const Thumb = React.forwardRef<ViewRef, SlottableViewProps>(
-  ({ asChild, ...props }, ref) => {
-    const Component = asChild ? Slot.View : View;
-    return <Component ref={ref} role='presentation' {...props} />;
-  }
-);
+const Thumb = React.forwardRef<ViewRef, SlottableViewProps>(({ asChild, ...props }, ref) => {
+  const Component = asChild ? Slot.View : View
+  return <Component ref={ref} role="presentation" {...props} />
+})
 
-Thumb.displayName = 'ThumbNativeSwitch';
+Thumb.displayName = "ThumbNativeSwitch"
 
-export { Root, Thumb };
+export { Root, Thumb }

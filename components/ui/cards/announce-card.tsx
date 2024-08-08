@@ -5,7 +5,7 @@ import { Muted } from "../typography"
 
 type Props = {
   title: string
-  message: String
+  message: string
 }
 
 export const AnnounceCard = (props: Props) => {

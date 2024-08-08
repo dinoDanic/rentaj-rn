@@ -1,8 +1,6 @@
 import { PropsWithChildren } from "react"
 import { MotiView } from "moti"
 
-import { Separator } from "../ui/separator"
-
 type Props = PropsWithChildren & {
   className?: string
   delay?: number

@@ -3,11 +3,11 @@ import { router } from "expo-router"
 import { View } from "react-native"
 
 import { ChevronLeft } from "@/lib/icons/icon-with-classname"
+import { iconSizes } from "@/lib/sizes"
 import { cn } from "@/lib/utils"
 
 import { Button } from "./button"
 import { H4 } from "./typography"
-import { iconSizes } from "@/lib/sizes"
 
 type HeaderProps = {
   actions?: ReactNode[]
